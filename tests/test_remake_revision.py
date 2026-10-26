@@ -112,7 +112,17 @@ class RevisionTests(unittest.TestCase):
                     part = self.parts[node.attrib['ref']]
                     pads = [p for p in part.Pads() if p.GetNumber()==node.attrib['pin']]
                     self.assertTrue(pads,(node.attrib,name))
-                    self.assertTrue(all(p.GetNetname()==name for p in pads),(node.attrib,name))
+                    if 'no_connect' in node.attrib.get('pintype','').split('+'):
+                        # KiCad can give alternative footprint pads separate
+                        # no-connect nets. Only numeric disambiguation is allowed;
+                        # assigning an unused pad to a signal net must still fail.
+                        pattern = re.escape(name)+r'(?:_\d+)?'
+                        # PCB net names escape '/' in pin names as '{slash}'.
+                        self.assertTrue(all(re.fullmatch(pattern,p.GetNetname().replace('{slash}','/'))
+                                            for p in pads),
+                                        (node.attrib,name,[p.GetNetname() for p in pads]))
+                    else:
+                        self.assertTrue(all(p.GetNetname()==name for p in pads),(node.attrib,name))
 
     @unittest.skipUnless(shutil.which('kicad-cli'), 'requires KiCad CLI')
     def test_placement_has_no_new_part_collisions_or_clipped_branding(self):
