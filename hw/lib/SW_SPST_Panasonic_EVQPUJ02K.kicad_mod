@@ -1,0 +1,267 @@
+(footprint "SW_SPST_Panasonic_EVQPUJ02K"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Panasonic EVQPUJ02K side-push momentary SPST-NO, no boss; official KiCad Panasonic_EVQPUJ_EVQPUA lands; project silk/model-path adjustments only.")
+	(tags "SMD SMT SPST EVQPUJ EVQPUA")
+	(property "Reference" "REF**"
+		(at 0 -4.5 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "e8bf4d88-d25b-4690-b493-e3e853adb995")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "EVQPUJ02K"
+		(at 0 3.5 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "3755a63b-0fc6-49fd-af94-8004428c2b34")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "607d93cf-143f-46ab-9ba7-86c3d5b0e4f6")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "4a623e9f-8fa9-47fa-849c-db76329504c0")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -3.9 2.25)
+		(end -3.9 -3.25)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "215a9f18-72fa-4caa-bbdc-3dc62c0b87ce")
+	)
+	(fp_line
+		(start 3.9 -3.25)
+		(end -3.9 -3.25)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "7f1832f7-3d27-463a-9a8d-bbedd0cf1bf3")
+	)
+	(fp_line
+		(start 3.9 2.25)
+		(end -3.9 2.25)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "a4db0253-78ca-40b1-8d29-26d796d4ce46")
+	)
+	(fp_line
+		(start 3.9 2.25)
+		(end 3.9 -3.25)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "0922c827-ade3-4625-acd5-6b063c6dcfa4")
+	)
+	(fp_line
+		(start -2.45 0.275)
+		(end -2.45 -0.275)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "06e93fb8-5c07-4ba9-b622-dd47b4fad6d3")
+	)
+	(fp_line
+		(start -2.35 1.75)
+		(end -2.35 -1.75)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "41d57551-e731-49c7-aa3c-c03d041665cb")
+	)
+	(fp_line
+		(start -1.425 -1.85)
+		(end -2.35 -1.85)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "2ca06aa4-3a6d-4d45-86df-2a84080a8863")
+	)
+	(fp_line
+		(start -1.3 -2.75)
+		(end -1.3 -1.75)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "c46ded7c-0744-4f3e-8cea-217dce1539e1")
+	)
+	(fp_line
+		(start 1.3 -2.75)
+		(end -1.3 -2.75)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "e9229e5e-57a8-416a-92ba-ee509a682516")
+	)
+	(fp_line
+		(start 1.3 -2.75)
+		(end 1.3 -1.75)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "7f57546b-e02d-47ec-86b8-5c9a19af0510")
+	)
+	(fp_line
+		(start 2.35 -1.85)
+		(end 1.425 -1.85)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "7dc591b0-57f9-4239-a5ec-6068ad8efb41")
+	)
+	(fp_line
+		(start 2.35 -1.75)
+		(end -2.35 -1.75)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "531d755e-f1f5-449b-bc1e-026d11a8416a")
+	)
+	(fp_line
+		(start 2.35 1.75)
+		(end -2.35 1.75)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "f25aaa0d-df3b-41d5-bf88-436edcad7716")
+	)
+	(fp_line
+		(start 2.35 1.75)
+		(end 2.35 -1.75)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "feef603d-b8e4-4d87-a0f4-237de846110e")
+	)
+	(fp_line
+		(start 2.35 1.85)
+		(end -2.35 1.85)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "fb5a023e-b861-4f13-81cb-7a20ca0ccd66")
+	)
+	(fp_line
+		(start 2.45 0.275)
+		(end 2.45 -0.275)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "4f9c14eb-24a2-4f0a-90d3-f3482f6f07d8")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "abfc7172-c88c-4cd6-a43c-1abcf1e88687")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at -2.625 -0.85 180)
+		(size 1.55 1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "12f51c7f-023c-4d23-8c75-67e1845b3570")
+	)
+	(pad "1" smd rect
+		(at 2.625 -0.85 180)
+		(size 1.55 1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "f6ac0410-8c9e-43b1-8d6e-668104b6bab1")
+	)
+	(pad "2" smd rect
+		(at -2.625 0.85 180)
+		(size 1.55 1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "95584fbc-b192-4df7-ab31-50975f25c289")
+	)
+	(pad "2" smd rect
+		(at 2.625 0.85 180)
+		(size 1.55 1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "9287551a-3149-4e80-b2b2-c5abd8c743b8")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/../cad/components/Panasonic_EVQPUJ_EVQPUA.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

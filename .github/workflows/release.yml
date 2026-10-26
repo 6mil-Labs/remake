@@ -1,0 +1,168 @@
+name: Draft release
+
+on:
+  push:
+    tags: ["**"]
+
+permissions:
+  contents: read
+
+# Serialize retries for a tag; never cancel a run during draft creation.
+concurrency:
+  group: draft-release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  ci:
+    name: Required CI
+    uses: ./.github/workflows/kicad.yml
+
+  package:
+    name: Fabrication and design exports
+    needs: ci
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Create report directory
+        run: mkdir -p build/kicad
+
+      # Refill and SAVE this checkout: the export action reloads it in a new process.
+      - name: Check and refill the board before export
+        run: |
+          docker run --rm \
+            --user "$(id -u):$(id -g)" \
+            --env HOME=/tmp/kicad-home \
+            --volume "$PWD:/workspace" --workdir /workspace \
+            kicad/kicad:10.0 \
+            kicad-cli pcb drc --refill-zones --save-board --schematic-parity \
+              --exit-code-violations --output build/kicad/release-drc.rpt \
+              hw/remake.kicad_pcb
+
+      # actions-for-kicad v2-k10.0, including separate PTH/NPTH drill exports.
+      - name: Export Gerbers and split Excellon drills
+        uses: actions-for-kicad/kicad-actions@c37445cbb65e1b9042d108bf0a257ead1ef80393
+        with:
+          project_file_name: hw/remake.kicad_pro
+          pcb_file_name: hw/remake.kicad_pcb
+          pcb_output_layers: F.Cu,B.Cu,F.Mask,B.Mask,F.SilkS,B.SilkS,Edge.Cuts,F.Paste,B.Paste
+          pcb_output_gerbers_and_drill: true
+          pcb_output_gerbers_and_drill_folder_name: build/jlcpcb
+          pcb_output_drill_format: excellon
+          pcb_output_drill_split: true
+
+      - name: Export schematic and assembly previews
+        run: |
+          docker run --rm \
+            --user "$(id -u):$(id -g)" \
+            --env HOME=/tmp/kicad-home \
+            --volume "$PWD:/workspace" --workdir /workspace \
+            kicad/kicad:10.0 \
+            python3 scripts/export-release.py build/release
+
+      # ONE bare-PCB Gerber/drill set only. Left/right previews stay outside this ZIP.
+      - name: Validate exports and create fabrication ZIP
+        run: python3 scripts/package-jlcpcb.py build/jlcpcb build/release/remake-jlcpcb.zip
+
+      - name: Create checksums
+        working-directory: build/release
+        run: |
+          sha256sum remake-jlcpcb.zip remake-schematic.pdf \
+            remake-left.png remake-right.png remake-left.step remake-right.step \
+            remake-model-coverage.json > SHA256SUMS
+
+      - name: Save release assets
+        uses: actions/upload-artifact@v7
+        with:
+          name: remake-release-assets
+          path: |
+            build/release/remake-jlcpcb.zip
+            build/release/remake-schematic.pdf
+            build/release/remake-left.png
+            build/release/remake-right.png
+            build/release/remake-left.step
+            build/release/remake-right.step
+            build/release/remake-model-coverage.json
+            build/release/SHA256SUMS
+          if-no-files-found: error
+
+      - name: Save export DRC report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: release-export-drc
+          path: build/kicad/release-drc.rpt
+          if-no-files-found: warn
+
+  draft:
+    name: Create draft only after successful CI and packaging
+    needs: [ci, package]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: remake-release-assets
+          path: build/release
+
+      - name: Verify downloaded release checksums
+        working-directory: build/release
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          expected = {'remake-jlcpcb.zip', 'remake-schematic.pdf', 'remake-left.png',
+                      'remake-right.png', 'remake-left.step', 'remake-right.step',
+                      'remake-model-coverage.json'}
+          lines = Path('SHA256SUMS').read_text().splitlines()
+          matches = [re.fullmatch(r'[0-9a-f]{64}  ([A-Za-z0-9_.-]+)', line) for line in lines]
+          if len(lines) != len(expected) or not all(matches) or {m[1] for m in matches} != expected:
+              raise SystemExit('Incomplete or unexpected release checksum manifest')
+          PY
+          sha256sum --strict --check SHA256SUMS
+
+      - name: Verify tag still identifies the checked commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.ref_name }}
+          CHECKED_COMMIT: ${{ github.sha }}
+        run: |
+          encoded_ref=$(python3 -c 'import os, urllib.parse; print(urllib.parse.quote("refs/tags/" + os.environ["RELEASE_TAG"], safe=""))')
+          actual=$(gh api "repos/$GH_REPO/commits/$encoded_ref" --jq .sha)
+          if [[ "$actual" != "$CHECKED_COMMIT" ]]; then
+            echo "The tag moved or was deleted after CI; refusing to create a release." >&2
+            exit 1
+          fi
+
+      - name: Create draft release with fabrication assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.ref_name }}
+          CHECKED_COMMIT: ${{ github.sha }}
+        run: |
+          gh api --paginate --slurp "repos/$GH_REPO/releases?per_page=100" \
+            > build/release/existing-releases.json
+          matches=$(jq -er --arg tag "$RELEASE_TAG" \
+            '[.[][] | select(.tag_name == $tag)] | length' \
+            build/release/existing-releases.json)
+          if (( matches != 0 )); then
+            echo "A draft or published release already exists for this tag; refusing to create another." >&2
+            exit 1
+          fi
+          printf 'Fabrication and design exports for REMAKE.\n\nChecked commit: %s\n\nThe JLCPCB ZIP contains ONE PCB design. Use two identical copies per keyboard. PDF, PNG and STEP previews are separate attachments.\n\nSTEP/PNG geometry is partial and uses redistributable models only; read remake-model-coverage.json for omissions, notices and coordinate conventions. Verify actual controller/display/header/battery/keycap geometry before case design.\n\nCI passed before this draft was created. Review all outputs and hardware validation status before publishing or ordering.\n' \
+            "$CHECKED_COMMIT" > build/release/notes.md
+          gh release create --draft --verify-tag \
+            --title "REMAKE $RELEASE_TAG" \
+            --notes-file build/release/notes.md \
+            -- "$RELEASE_TAG" \
+            build/release/remake-jlcpcb.zip \
+            build/release/remake-schematic.pdf \
+            build/release/remake-left.png \
+            build/release/remake-right.png \
+            build/release/remake-left.step \
+            build/release/remake-right.step \
+            build/release/remake-model-coverage.json \
+            build/release/SHA256SUMS

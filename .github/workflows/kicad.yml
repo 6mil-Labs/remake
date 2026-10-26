@@ -1,0 +1,88 @@
+name: KiCad
+
+on:
+  workflow_call:
+  workflow_dispatch:
+  push:
+    branches: ["**"]
+    paths:
+      - "hw/**"
+      - "cad/components/**"
+      - "scripts/**"
+      - "tests/**"
+      - ".github/workflows/**"
+  pull_request:
+    paths:
+      - "hw/**"
+      - "cad/components/**"
+      - "scripts/**"
+      - "tests/**"
+      - ".github/workflows/**"
+
+permissions:
+  contents: read
+
+jobs:
+  packaging-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Test fabrication packaging
+        run: python3 -m unittest discover -s tests -v
+
+  checks:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        check: [erc, drc]
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Create report directory
+        run: mkdir -p build/kicad
+
+      # actions-for-kicad v2-k10.0; includes split PTH/NPTH drill export support.
+      - name: Run ${{ matrix.check }}
+        if: matrix.check == 'erc'
+        uses: actions-for-kicad/kicad-actions@c37445cbb65e1b9042d108bf0a257ead1ef80393
+        with:
+          project_file_name: hw/remake.kicad_pro
+          schematic_file_name: hw/remake.kicad_sch
+          pcb_file_name: hw/remake.kicad_pcb
+          run_erc: true
+          erc_output_file_name: build/kicad/erc.rpt
+
+      # The generic action has no switches for zone refill or schematic parity.
+      # Run the strict DRC in the same upstream KiCad image with both enabled.
+      - name: Test tooling and board geometry with real KiCad
+        if: matrix.check == 'drc'
+        run: |
+          docker run --rm \
+            --user "$(id -u):$(id -g)" \
+            --env HOME=/tmp/kicad-home \
+            --volume "$PWD:/workspace" --workdir /workspace \
+            kicad/kicad:10.0 bash -ec '
+              python3 -c "import pcbnew"
+              python3 -m unittest discover -s tests -v
+            '
+
+      - name: Run DRC with zone refill and schematic parity
+        if: matrix.check == 'drc'
+        run: |
+          docker run --rm \
+            --user "$(id -u):$(id -g)" \
+            --env HOME=/tmp/kicad-home \
+            --volume "$PWD:/workspace" --workdir /workspace \
+            kicad/kicad:10.0 \
+            kicad-cli pcb drc --refill-zones --schematic-parity \
+              --exit-code-violations --output build/kicad/drc.rpt \
+              hw/remake.kicad_pcb
+
+      - name: Upload ${{ matrix.check }} report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: kicad-${{ matrix.check }}
+          path: build/kicad/${{ matrix.check }}.rpt
+          if-no-files-found: warn

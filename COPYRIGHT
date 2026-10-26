@@ -1,0 +1,13 @@
+REMAKE
+Copyright (C) 2026 Felipe Balbi
+SPDX-License-Identifier: CERN-OHL-S-2.0
+
+The REMAKE hardware design and project-authored sources, documentation and
+artwork are licensed under the CERN Open Hardware Licence Version 2 -
+Strongly Reciprocal. The complete licence text is in LICENSE.
+
+Imported third-party component models and library sources retain their own
+copyrights, licences and notices. This project licence does not relicense
+those assets or grant redistribution rights for local-only assets in
+cad/local-models/. See cad/components/sources.json, the accompanying
+third-party licence files, and docs/components.md for their scope.

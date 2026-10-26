@@ -1,0 +1,48 @@
+[
+  {
+    "file": "Panasonic_EVQPUJ_EVQPUA.step",
+    "attribution": "KiCad Library Team and contributors",
+    "notice": "LICENSE-KICAD.txt",
+    "source": "https://gitlab.com/kicad/libraries/kicad-packages3D/-/blob/master/Button_Switch_SMD.3dshapes/Panasonic_EVQPUJ_EVQPUA.step",
+    "installed_source": "/usr/share/kicad/3dmodels/Button_Switch_SMD.3dshapes/Panasonic_EVQPUJ_EVQPUA.step",
+    "sha256": "88502ca94b12719aef367ebf68ba17d37f02468b0763d5997e70d2b705b609c8",
+    "license": "CC-BY-SA-4.0 with KiCad design exception",
+    "modified": false
+  },
+  {
+    "file": "SW_Hotswap_Kailh_Choc_V1.step",
+    "attribution": "perigoso/KiSwitch contributors",
+    "notice": "LICENSE-KISWITCH.txt",
+    "source": "https://raw.githubusercontent.com/perigoso/keyswitch-kicad-library/9edbd5ea3f5f4e36cbdfaefdf3d8b5c28277a416/library/3dmodels/3d-library.3dshapes/SW_Hotswap_Kailh_Choc_V1.stp",
+    "sha256": "081d32412d8a6d4f5e5e9b61317f8162e508741cd2ff31abf07aa7a007bc7b10",
+    "license": "CC-BY-SA-4.0 with KiCad design exception",
+    "modified": false
+  },
+  {
+    "file": "SW_Kailh_Choc_V1.step",
+    "attribution": "perigoso/KiSwitch contributors",
+    "notice": "LICENSE-KISWITCH.txt",
+    "source": "https://raw.githubusercontent.com/perigoso/keyswitch-kicad-library/9edbd5ea3f5f4e36cbdfaefdf3d8b5c28277a416/library/3dmodels/3d-library.3dshapes/SW_Kailh_Choc_V1.stp",
+    "sha256": "669d72c083f226e1f9ee9e9dc8424c18e9641984223ba5422a1235d773a6a9a8",
+    "license": "CC-BY-SA-4.0 with KiCad design exception",
+    "modified": false
+  },
+  {
+    "file": "D_SOD123.step",
+    "attribution": "KiCad Library Team and contributors",
+    "notice": "LICENSE-KICAD.txt",
+    "source": "https://gitlab.com/kicad/libraries/kicad-packages3D/-/raw/8975715167d1a76f9b44be155ac02326f704cdbb/Diode_SMD.3dshapes/D_SOD-123.step",
+    "sha256": "b3dc4065573abc72e3d5b4cca0e908f72a24205a41b6284b1f75ccacbe99adf8",
+    "license": "CC-BY-SA-4.0 with KiCad design exception",
+    "modified": false
+  },
+  {
+    "file": "SW_MSK12C02.step",
+    "attribution": "ebastler/marbastlib contributors",
+    "notice": "LICENSE-MARBASTLIB.txt",
+    "source": "https://raw.githubusercontent.com/ebastler/marbastlib/6b0a9a73f579e377816d60b58eac2b3252de7868/3dmodels/SW_MSK12C02.step",
+    "sha256": "78d4d016c06e0cd88ce4909acf2f225bd1ed69cb9a170528c1ab0e97913d313c",
+    "license": "CERN-OHL-P-2.0",
+    "modified": false
+  }
+]
