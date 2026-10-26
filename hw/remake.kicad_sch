@@ -1540,10 +1540,17 @@
 		)
 		(uuid "ef2daa6f-aa83-5839-9b2e-0b151a8d2e49")
 	)
-
 	(no_connect
 		(at 40.64 259.08)
 		(uuid "5e49c520-83d9-5ff1-a1e6-c38e37e621f5")
+	)
+	(no_connect
+		(at 231.14 77.47)
+		(uuid "95ed5b7f-9429-4b6d-8a01-f19df2b6bd96")
+	)
+	(no_connect
+		(at 266.7 77.47)
+		(uuid "c666fd8b-1796-4381-b3ec-1482de813fb8")
 	)
 	(wire
 		(pts
@@ -1574,16 +1581,6 @@
 			(type default)
 		)
 		(uuid "00eda50d-4c91-56c9-ba07-0b245f72e228")
-	)
-	(wire
-		(pts
-			(xy 233.68 77.47) (xy 231.14 77.47)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0164b90c-4727-5ddb-9763-68adfa61cf70")
 	)
 	(wire
 		(pts
@@ -2655,7 +2652,6 @@
 		)
 		(uuid "7b1232c5-9db7-58ca-9add-de856c8e97f7")
 	)
-
 	(wire
 		(pts
 			(xy 137.16 132.08) (xy 134.62 132.08)
@@ -2855,6 +2851,16 @@
 			(type default)
 		)
 		(uuid "9bf87935-2f71-5b62-869b-71de1147cfc3")
+	)
+	(wire
+		(pts
+			(xy 231.14 77.47) (xy 233.68 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9c90da38-49c8-42af-95b5-6efafd4a3dad")
 	)
 	(wire
 		(pts
@@ -3298,16 +3304,6 @@
 	)
 	(wire
 		(pts
-			(xy 264.16 77.47) (xy 266.7 77.47)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e00fb321-778b-5b63-89cd-0121d379a5fd")
-	)
-	(wire
-		(pts
 			(xy 347.98 101.6) (xy 345.44 101.6)
 		)
 		(stroke
@@ -3365,6 +3361,16 @@
 			(type default)
 		)
 		(uuid "e67e2a3f-1808-5428-a26f-86ca574f7a4e")
+	)
+	(wire
+		(pts
+			(xy 264.16 77.47) (xy 266.7 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e84150b8-777a-46b1-b32c-02d2522e786d")
 	)
 	(wire
 		(pts
@@ -3446,7 +3452,6 @@
 		)
 		(uuid "f3789932-6d58-584e-8a3b-7cf4eb6b4660")
 	)
-
 	(wire
 		(pts
 			(xy 121.92 238.76) (xy 124.46 238.76)
@@ -3815,7 +3820,6 @@
 			)
 		)
 	)
-
 	(global_label "KEY01"
 		(shape bidirectional)
 		(at 43.18 63.5 0)
@@ -4617,28 +4621,6 @@
 			)
 		)
 	)
-	(global_label "U_SOCKET_18"
-		(shape bidirectional)
-		(at 231.14 77.47 180)
-		(effects
-			(font
-				(size 0.9 0.9)
-			)
-			(justify right)
-		)
-		(uuid "42067adc-0c8d-597e-a4f3-ff8878e86dfd")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 231.14 77.47 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-	)
 	(global_label "U_SOCKET_06"
 		(shape bidirectional)
 		(at 266.7 74.93 0)
@@ -5019,7 +5001,6 @@
 			)
 		)
 	)
-
 	(global_label "U_SOCKET_21"
 		(shape bidirectional)
 		(at 464.82 254 180)
@@ -5675,28 +5656,6 @@
 		(uuid "7c387347-ee33-503f-8e5f-a8f0e4dd7941")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 134.62 91.44 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-	)
-	(global_label "U_SOCKET_07"
-		(shape bidirectional)
-		(at 266.7 77.47 0)
-		(effects
-			(font
-				(size 0.9 0.9)
-			)
-			(justify left)
-		)
-		(uuid "7f1bfe13-0c26-531a-9539-b9b347b15044")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 266.7 77.47 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12430,7 +12389,6 @@
 			)
 		)
 	)
-
 	(symbol
 		(lib_id "REMAKE:Jumper")
 		(at 353.06 91.44 0)
