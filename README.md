@@ -52,11 +52,11 @@ schematic-to-PCB associations separately from electrical parity.
 Run from the repository root, with reports outside the source tree:
 
 ```sh
-mkdir -p /tmp/opencode/remake-checks
+mkdir -p .remake-checks
 kicad-cli pcb drc --format json --refill-zones --schematic-parity \
-  --output /tmp/opencode/remake-checks/drc.json hw/remake.kicad_pcb
+  --output .remake-checks/drc.json hw/remake.kicad_pcb
 kicad-cli sch erc --format json \
-  --output /tmp/opencode/remake-checks/erc.json hw/remake.kicad_sch
+  --output .remake-checks/erc.json hw/remake.kicad_sch
 ```
 
 Before fabrication, require clean refilled DRC, zero unconnected items and
