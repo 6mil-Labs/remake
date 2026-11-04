@@ -172,6 +172,7 @@
         {
           "td_allow_use_two_tracks": true,
           "td_curve_segcount": 0,
+          "td_enabled": false,
           "td_height_ratio": 1.0,
           "td_length_ratio": 0.5,
           "td_maxheight": 2.0,
@@ -183,6 +184,7 @@
         {
           "td_allow_use_two_tracks": true,
           "td_curve_segcount": 0,
+          "td_enabled": false,
           "td_height_ratio": 1.0,
           "td_length_ratio": 0.5,
           "td_maxheight": 2.0,
@@ -194,6 +196,7 @@
         {
           "td_allow_use_two_tracks": true,
           "td_curve_segcount": 0,
+          "td_enabled": false,
           "td_height_ratio": 1.0,
           "td_length_ratio": 0.5,
           "td_maxheight": 2.0,
@@ -550,8 +553,8 @@
     "meta": {
       "version": 5
     },
-    "net_colors": null,
-    "netclass_assignments": null,
+    "net_colors": {},
+    "netclass_assignments": {},
     "netclass_patterns": [
       {
         "netclass": "Power",
@@ -716,7 +719,7 @@
         "uuid": "72c1fe6d-f5ad-5d0a-91e5-ed8363cd6fe2"
       }
     ],
-    "used_designators": "",
+    "used_designators": "#PWR1-5,H1-5",
     "variants": []
   },
   "sheets": [
@@ -726,7 +729,7 @@
     ]
   ],
   "text_variables": {
-    "REVISION": "0.2-RC1"
+    "REVISION": "0.2-RC2"
   },
   "tuning_profiles": {
     "meta": {

@@ -70,14 +70,24 @@ class RevisionTests(unittest.TestCase):
                 if thumb!=other:
                     self.assertFalse(overlap(cap(thumb),cap(other)),(thumb,other))
 
-    def test_no_dedicated_mounting_holes_remain(self):
-        # Component locating holes are required; separate case-mounting
-        # footprints were explicitly removed from this PCB design.
-        mounts = [(ref,str(part.GetFPID().GetLibItemName()))
-                  for ref,part in self.parts.items()
+    def test_five_mounting_holes_have_plated_holes_and_grounded_pads_on_both_faces(self):
+        mounts = {ref: part for ref,part in self.parts.items()
                   if re.fullmatch(r'H\d+',ref)
-                  or str(part.GetFPID().GetLibItemName()).startswith('MountingHole')]
-        self.assertEqual(mounts,[])
+                  or str(part.GetFPID().GetLibItemName()).startswith('MountingHole')}
+        self.assertEqual(set(mounts), {f'H{i}' for i in range(1,6)})
+        for ref,part in mounts.items():
+            with self.subTest(reference=ref):
+                self.assertTrue(str(part.GetFPID().GetLibItemName()).startswith('MountingHole'))
+                pads = list(part.Pads())
+                self.assertTrue(pads)
+                self.assertTrue(all(p.GetNumber() == '1' for p in pads))
+                self.assertTrue(all(p.GetNetname() == 'GND' for p in pads))
+                holes = [p for p in pads if p.GetAttribute() == self.pcbnew.PAD_ATTRIB_PTH]
+                self.assertEqual(len(holes), 1)
+                self.assertGreater(holes[0].GetDrillSize().x, 0)
+                self.assertGreater(holes[0].GetDrillSize().y, 0)
+                for layer in [self.pcbnew.F_Cu, self.pcbnew.B_Cu]:
+                    self.assertTrue(any(p.IsOnLayer(layer) for p in pads))
 
     def test_battery_alternatives_preserve_polarity_and_opposite_face_alignment(self):
         left,right=self.parts['JBAT_L1'],self.parts['JBAT_R1']
@@ -102,8 +112,13 @@ class RevisionTests(unittest.TestCase):
             )
             self.assertEqual(result.returncode,0,result.stderr)
             xml = ET.parse(path / 'netlist.xml').getroot()
-            self.assertNotIn('H3',{c.attrib['ref'] for c in xml.findall('./components/comp')})
+            mounts = {c.attrib['ref'] for c in xml.findall('./components/comp')
+                      if re.fullmatch(r'H\d+',c.attrib['ref'])}
+            self.assertEqual(mounts, {f'H{i}' for i in range(1,6)})
             nets = {n.attrib['name']:n for n in xml.findall('./nets/net')}
+            self.assertEqual({(n.attrib['ref'],n.attrib['pin']) for n in nets['GND']
+                              if n.attrib['ref'] in mounts},
+                             {(ref,'1') for ref in mounts})
             self.assertIn('KEY18',nets)
             self.assertEqual({(n.attrib['ref'],n.attrib['pin']) for n in nets['KEY18']},
                              {('SW18','2'),('D18','2')})
@@ -191,7 +206,7 @@ class RevisionTests(unittest.TestCase):
 
     def test_revision_and_author_metadata_are_shared_by_pcb_and_schematic(self):
         project = json.loads((ROOT / 'hw/remake.kicad_pro').read_text())
-        self.assertEqual(project['text_variables'].get('REVISION'), '0.2-RC1')
+        self.assertEqual(project['text_variables'].get('REVISION'), '0.2-RC2')
         title = self.board.GetTitleBlock()
         self.assertEqual(title.GetTitle(), 'REMAKE')
         self.assertEqual(title.GetRevision(), '${REVISION}')

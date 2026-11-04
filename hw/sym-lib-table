@@ -1,3 +1,5 @@
 (sym_lib_table
  (lib (name "REMAKE")(type "KiCad")(uri "${KIPRJMOD}/lib/reversible.kicad_sym")(options "")(descr "REMAKE reversible keyboard symbols"))
+ (lib (name "power")(type "KiCad")(uri "${KICAD10_SYMBOL_DIR}/power.kicad_sym")(options "")(descr "KiCad standard power symbols"))
+ (lib (name "Mechanical")(type "KiCad")(uri "${KICAD10_SYMBOL_DIR}/Mechanical.kicad_sym")(options "")(descr "KiCad standard mechanical symbols"))
 )

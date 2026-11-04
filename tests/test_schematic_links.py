@@ -39,6 +39,13 @@ class SchematicLinkTests(unittest.TestCase):
             raise AssertionError(result.stderr)
         xml = ET.parse(cls.path / 'netlist.xml').getroot()
         cls.expected = {}
+        cls.symbol_pins = {}
+        library_pins = {
+            (part.attrib['lib'], part.attrib['part']): {
+                pin.attrib['num'] for pin in part.findall('./pins/pin')
+            }
+            for part in xml.findall('./libparts/libpart')
+        }
         for comp in xml.findall('./components/comp'):
             if any(p.attrib['name']=='exclude_from_board' for p in comp.findall('property')):
                 continue
@@ -47,6 +54,40 @@ class SchematicLinkTests(unittest.TestCase):
             cls.expected[comp.attrib['ref']] = {
                 sheet+'/'+stamp for stamp in comp.findtext('tstamps').split()
             }
+            source = comp.find('libsource')
+            cls.symbol_pins[comp.attrib['ref']] = library_pins[
+                (source.attrib['lib'], source.attrib['part'])
+            ]
+
+    def test_every_numbered_board_pad_has_a_matching_symbol_pin(self):
+        for footprint in self.board.GetFootprints():
+            if footprint.GetAttributes() & self.k.FP_BOARD_ONLY:
+                continue
+            ref = footprint.GetReference()
+            for pad in footprint.Pads():
+                number = pad.GetNumber()
+                if number:
+                    with self.subTest(reference=ref, pad=number, uuid=pad.m_Uuid.AsString()):
+                        self.assertIn(number, self.symbol_pins[ref])
+
+    def test_mechanical_pad_cleanup_is_retained_in_source_footprints(self):
+        for ref, name, anchors in [
+            ('PWR1', 'SW_Power_MSK12C02_reversible', 8),
+            ('JBAT_L1', 'JST_PH_2mm_side_entry', 2),
+            ('JBAT_R1', 'JST_PH_2mm_side_entry', 2),
+        ]:
+            library = self.k.FootprintLoad(str(ROOT / 'hw/lib'), name)
+            placed = next(f for f in self.board.GetFootprints() if f.GetReference() == ref)
+            for kind, footprint in [('library', library), ('board', placed)]:
+                with self.subTest(reference=ref, footprint=kind):
+                    self.assertIsNotNone(footprint)
+                    pads = list(footprint.Pads())
+                    mounting = [p for p in pads if p.GetAttribute() == self.k.PAD_ATTRIB_SMD
+                                and not p.GetNumber()]
+                    self.assertEqual(len(mounting), anchors)
+                    self.assertTrue(all(not p.GetNetname() for p in mounting))
+                    self.assertTrue(all(p.GetNumber() in self.symbol_pins[ref]
+                                        for p in pads if p.GetNumber()))
 
     def test_every_symbol_matches_one_existing_footprint_by_uuid_path(self):
         parts = list(self.board.GetFootprints())

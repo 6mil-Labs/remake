@@ -3,6 +3,7 @@
 import importlib.util
 import fnmatch
 import json
+import os
 from pathlib import Path
 import shutil
 import subprocess
@@ -26,11 +27,14 @@ class RoutingTests(unittest.TestCase):
         # Check the real routed board, not the placement-only stripped copy.
         with tempfile.TemporaryDirectory(prefix='remake-routing-') as tmp:
             report = Path(tmp) / 'drc.json'
+            # Match CI's fresh profile instead of relying on global library tables.
+            home = Path(tmp) / 'home'
+            env = dict(os.environ, HOME=str(home), XDG_CONFIG_HOME=str(home / '.config'))
             subprocess.run([
                 'kicad-cli', 'pcb', 'drc', '--format', 'json', '--refill-zones',
                 '--schematic-parity', '--output', str(report),
                 str(ROOT / 'hw/remake.kicad_pcb'),
-            ], check=True, capture_output=True, text=True)
+            ], check=True, capture_output=True, text=True, env=env)
             cls.drc = json.loads(report.read_text())
 
     def test_all_bare_board_connections_are_routed_without_solder_bridges(self):

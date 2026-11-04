@@ -1,4 +1,5 @@
 (fp_lib_table
   (lib (name "remake-footprints")(type "KiCad")(uri "${KIPRJMOD}/lib")(options "")(descr "REMAKE footprint library"))
   (lib (name "remake-artwork")(type "KiCad")(uri "${KIPRJMOD}/footprints/remake.pretty")(options "")(descr "REMAKE artwork"))
+  (lib (name "MountingHole")(type "KiCad")(uri "${KICAD10_FOOTPRINT_DIR}/MountingHole.pretty")(options "")(descr "KiCad standard mounting holes"))
 )
