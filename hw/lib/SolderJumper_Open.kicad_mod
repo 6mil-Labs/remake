@@ -1,7 +1,92 @@
-(footprint "SolderJumper_Open" (version 20240108) (generator pcbnew) (layer "F.Cu") (descr "Normally open hand-solder jumper, 0.3 mm gap, no stencil paste") (attr smd)
-(fp_text reference "REF**" (at 0 0) (layer "F.SilkS") hide (effects (font (size 0.7 0.7) (thickness 0.1))))
-(fp_text value "SolderJumper_Open" (at 0 0) (layer "F.Fab") hide (effects (font (size 0.7 0.7) (thickness 0.1))))
-(pad "1" smd roundrect (at -0.45 0) (size 0.6 1.0) (roundrect_rratio 0.1) (layers "F.Cu" "F.Mask"))
-(pad "2" smd roundrect (at 0.45 0) (size 0.6 1.0) (roundrect_rratio 0.1) (layers "F.Cu" "F.Mask"))
-(fp_rect (start -0.9 -0.65) (end 0.9 0.65) (stroke (width 0.05) (type solid)) (fill none) (layer "F.CrtYd"))
+(footprint "SolderJumper_Open"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Normally open hand-solder jumper, 0.3 mm gap, no stencil paste")
+	(property "Reference" "REF**"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "c1470788-9ee9-47bd-9dbb-15199fd1b7ef")
+		(effects
+			(font
+				(size 0.7 0.7)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "SolderJumper_Open"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "e150c9aa-ae04-4bfa-bc01-4baf31a98dbd")
+		(effects
+			(font
+				(size 0.7 0.7)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2939d8c7-7c5c-4981-9a93-b23875bc79a0")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "c38b9762-e47a-4839-a24d-7449d794df51")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_rect
+		(start -0.15 -0.5)
+		(end 0.15 0.5)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill yes)
+		(layer "F.Mask")
+		(uuid "2d30ff9f-e081-4642-b2c9-1ba5670ba010")
+	)
+	(fp_rect
+		(start -0.9 -0.65)
+		(end 0.9 0.65)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "bbd3a0b9-e40c-489e-8a65-a41747b4adc1")
+	)
+	(pad "1" smd roundrect
+		(at -0.45 0)
+		(size 0.6 1)
+		(layers "F.Cu" "F.Mask")
+		(roundrect_rratio 0.1)
+		(uuid "7a327494-fce2-4ce8-889b-1c97359f94b7")
+	)
+	(pad "2" smd roundrect
+		(at 0.45 0)
+		(size 0.6 1)
+		(layers "F.Cu" "F.Mask")
+		(roundrect_rratio 0.1)
+		(uuid "c7907d6e-3c2a-4f60-9c40-fe8ad3f84518")
+	)
+	(embedded_fonts no)
 )
