@@ -16,6 +16,7 @@ or powering a board. A rendering is not proof of fit.
 | 18 | Kailh Choc v1 switches and matching hotswap sockets |
 | 18 | Keycaps, 17.5 × 16.5 mm outside envelopes |
 | 18 | 1N4148W switching diodes, SOD-123 |
+| 18, or 22 with a display | 0 Ω links, 0402 imperial / 1005 metric; manual solder bridges may be used instead |
 | 1 | Genuine nice!nano v2 |
 | 2 × 12 | Controller socket contacts and matching pins; height must be validated |
 | 1 | Optional nice!view and matching five-pin socket/header |
@@ -41,22 +42,39 @@ nice!view screen faces upward. USB points toward the stepped upper edge.
 | Switches and controller sockets | F, upward | B, upward |
 | Choc hotswap sockets | B, `L SOCKET` | F, `R SOCKET` |
 | nice!view socket | F | B |
-| Controller jumpers | Bridge `JPL_U*` on B | Bridge `JPR_U*` on F |
-| Display jumpers | Bridge `JPL_D*` on B | Bridge `JPR_D*` on F |
+| Controller links | Fit 0 Ω resistors or bridge `JPL_U*` on B | Fit 0 Ω resistors or bridge `JPR_U*` on F |
+| Optional display links | Fit 0 Ω resistors or bridge `JPL_D*` on B | Fit 0 Ω resistors or bridge `JPR_D*` on F |
 | Battery connector | `JBAT_L1` on F | `JBAT_R1` on B |
 | Power switch | `PWR1` F pads | `PWR1` B pads |
 | Reset switch | `RST_L1` on F | `RST_R1` on B |
 | Diodes | Prefer B, beneath keys | Prefer F, beneath keys |
 
-**Never bridge both banks: this shorts signals, including 3.3 V and ground.**
-Bridge the 18 controller pairs for the chosen half and its four display pairs
-if fitting a display. Leave every opposite-bank pair open. If omitting the
-display, leave both display banks open.
+**Never connect both banks: this shorts signals, including 3.3 V and ground.**
+The shared schematic and PCB deliberately mark **all 44 selection links DNP**
+(do not populate). This is the safe, unconfigured master, not the population
+of a finished keyboard. Existing `JPL_*`/`JPR_*` references are retained for
+the 0 Ω resistors so the left/right selection remains explicit.
 
-A jumper is a pair of small rectangular solder lands: bridge the two pads
-**within that one pair**, not adjacent jumpers or socket holes. Pad 1 is the
-module-contact side; pad 2 is the board-signal side. These gaps must not be
-closed with PCB routing.
+For each PCB, fit the chosen bank's **18 controller links** and its **four
+display links only if fitting a display**. That is **22 fitted / 22 DNP** with
+a display, or **18 fitted / 26 DNP** without one. Leave every opposite-bank
+link open. If omitting the display, leave both display banks open.
+
+Each link accepts either a **0402 imperial (1005 metric, nominal 1.0 × 0.5 mm)
+0 Ω resistor** or a hand-soldered bridge, not both. For manual assembly, bridge
+the two pads **within that one pair**, not adjacent links or socket holes.
+Pad 1 is the module-contact side; pad 2 is the board-signal side. The copper
+gap remains 0.30 mm with a continuous mask opening for hand bridging; it must
+not be closed with PCB routing.
+
+For factory assembly, choose an exact 0402 jumper part and check its current
+rating, reflow requirements, and suitability for the custom hybrid land pattern
+described in [component sources](components.md#dual-use-0402-selection-links).
+Only the selected bank may receive paste and parts. **DNP is not a stencil
+mask:** the raw master paste Gerbers contain apertures for both banks. They
+are not population-selected assembly stencils; prepare and inspect explicit
+left/right, display/no-display assembly outputs before ordering PCBA. This
+repository does not yet generate those production assembly variants.
 
 Populate only **one** battery connector, power switch and reset switch per PCB.
 `PWR1` has shared locating holes and needs no selection jumper. Fit one diode

@@ -570,7 +570,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "REMAKE:Jumper"
+		(symbol "REMAKE:R_0402_Link"
 			(pin_names
 				(offset 0.5)
 			)
@@ -589,8 +589,8 @@
 					)
 				)
 			)
-			(property "Value" "Jumper"
-				(at 0 -5.08 0)
+			(property "Value" "0R"
+				(at 0 -2.54 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -599,7 +599,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -632,23 +632,10 @@
 					)
 				)
 			)
-			(symbol "Jumper_0_1"
-				(polyline
-					(pts
-						(xy -2.54 0) (xy -0.8 0)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.8 0) (xy 2.54 0)
-					)
+			(symbol "R_0402_Link_0_1"
+				(rectangle
+					(start -2.54 -0.762)
+					(end 2.54 0.762)
 					(stroke
 						(width 0.254)
 						(type default)
@@ -658,7 +645,7 @@
 					)
 				)
 			)
-			(symbol "Jumper_1_1"
+			(symbol "R_0402_Link_1_1"
 				(pin passive line
 					(at -5.08 0 0)
 					(length 2.54)
@@ -2109,7 +2096,7 @@
 		)
 		(uuid "59c2db5c-3e6d-5b64-898b-bfe262d22807")
 	)
-	(text "LEFT selection\nBridge B.Cu only"
+	(text "LEFT selection\nJPL links on B only"
 		(exclude_from_sim no)
 		(at 476.25 36.322 0)
 		(effects
@@ -2129,7 +2116,7 @@
 		)
 		(uuid "760c71ce-928a-5e3f-850b-7eb3f93f03d0")
 	)
-	(text "MCU SOCKET\n\ncontacts isolated until the selected jumper bank is bridged"
+	(text "MCU SOCKET\n\nContacts isolated until the selected 0R links\nare fitted or bridged."
 		(exclude_from_sim no)
 		(at 302.26 233.68 0)
 		(effects
@@ -2139,7 +2126,7 @@
 		)
 		(uuid "90c8deb1-1709-57ac-8d2e-afbcf87c3cc2")
 	)
-	(text "Matrix: COL to switch to diode anode; cathode to ROW. One diode per key.\nLEFT: MCU/display on F; bridge L bank on B. RIGHT: modules on B; bridge R bank on F.\nNEVER bridge both banks. MCU component side faces the PCB. USB at the upper end."
+	(text "Matrix: COL to switch to diode anode; cathode to ROW. One diode per key.\nLEFT: MCU/display on F; JPL links on B. RIGHT: modules on B; JPR links on F.\nNEVER connect both banks. MCU component side faces the PCB. USB at the upper end."
 		(exclude_from_sim no)
 		(at 219.71 37.846 0)
 		(effects
@@ -2160,7 +2147,7 @@
 		)
 		(uuid "cf5f825d-32a3-5318-a781-bb377d75898c")
 	)
-	(text "RIGHT selection\nBridge F.Cu only"
+	(text "RIGHT selection\nJPR links on F only"
 		(exclude_from_sim no)
 		(at 545.592 36.322 0)
 		(effects
@@ -2169,6 +2156,15 @@
 			)
 		)
 		(uuid "ef2daa6f-aa83-5839-9b2e-0b151a8d2e49")
+	)
+	(text "0R SELECTION LINKS: all 44 are DNP in this shared master, not in the finished keyboard.\nFit 18 controller links (*_U*) from ONE bank: JPL for LEFT, JPR for RIGHT.\nWith a display, also fit that bank's 4 display links (*_D*): 22 fitted / 22 DNP.\nWithout a display: 18 fitted / 26 DNP. Solder bridges may replace the 0402 resistors.\nLeave the opposite bank open. Never fit or bridge both banks."
+		(exclude_from_sim no)
+		(at 20.32 35.56 0)
+		(effects
+			(font (size 1.27 1.27))
+			(justify left)
+		)
+		(uuid "4dc57f37-721b-45fc-b8ea-2bcf26dddc91")
 	)
 	(junction
 		(at 346.71 189.23)
@@ -8493,7 +8489,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 546.1 76.2 0)
 		(unit 1)
 		(body_style 1)
@@ -8501,7 +8497,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "02c4b3b7-ce6c-5d23-9b63-5480d8bb6188")
 		(property "Reference" "JPR_U04"
 			(at 546.1 71.12 0)
@@ -8513,9 +8509,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 546.1 81.28 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 546.1 78.74 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8524,7 +8519,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 546.1 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -8887,7 +8882,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 546.1 238.76 0)
 		(unit 1)
 		(body_style 1)
@@ -8895,7 +8890,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "109e0fc5-991e-50e7-bb5b-9c2919cb35cd")
 		(property "Reference" "JPR_U20"
 			(at 546.1 233.68 0)
@@ -8907,9 +8902,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 546.1 243.84 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 546.1 241.30 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8918,7 +8912,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 546.1 238.76 0)
 			(hide yes)
 			(show_name no)
@@ -9348,7 +9342,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 546.1 45.72 0)
 		(unit 1)
 		(body_style 1)
@@ -9356,7 +9350,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "1877051d-01d5-5b54-a331-39c9ad006316")
 		(property "Reference" "JPR_U01"
 			(at 546.1 40.64 0)
@@ -9368,9 +9362,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 546.1 50.8 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 546.1 48.26 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9379,7 +9372,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 546.1 45.72 0)
 			(hide yes)
 			(show_name no)
@@ -9657,7 +9650,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 474.98 161.29 0)
 		(unit 1)
 		(body_style 1)
@@ -9665,7 +9658,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "206b8bdf-4c28-501e-b58d-7ce70b65b3d1")
 		(property "Reference" "JPL_U12"
 			(at 474.98 156.21 0)
@@ -9677,9 +9670,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 474.98 166.37 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 474.98 163.83 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9688,7 +9680,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 474.98 161.29 0)
 			(hide yes)
 			(show_name no)
@@ -10127,7 +10119,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 474.98 191.77 0)
 		(unit 1)
 		(body_style 1)
@@ -10135,7 +10127,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "25aba6a0-e13c-5298-a879-154c8a72836c")
 		(property "Reference" "JPL_U15"
 			(at 474.98 186.69 0)
@@ -10147,9 +10139,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 474.98 196.85 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 474.98 194.31 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10158,7 +10149,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 474.98 191.77 0)
 			(hide yes)
 			(show_name no)
@@ -10206,7 +10197,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 474.98 341.63 0)
 		(unit 1)
 		(body_style 1)
@@ -10214,7 +10205,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "2663869a-5004-5e48-80ac-2da3fcabe847")
 		(property "Reference" "JPL_D4"
 			(at 474.98 336.55 0)
@@ -10226,9 +10217,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 474.98 346.71 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 474.98 344.17 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10237,7 +10227,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 474.98 341.63 0)
 			(hide yes)
 			(show_name no)
@@ -10437,7 +10427,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 474.98 311.15 0)
 		(unit 1)
 		(body_style 1)
@@ -10445,7 +10435,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "2df2859e-cc1f-565a-ab92-83dc15a6f2e1")
 		(property "Reference" "JPL_D1"
 			(at 474.98 306.07 0)
@@ -10457,9 +10447,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 474.98 316.23 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 474.98 313.69 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10468,7 +10457,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 474.98 311.15 0)
 			(hide yes)
 			(show_name no)
@@ -10516,7 +10505,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 474.98 130.81 0)
 		(unit 1)
 		(body_style 1)
@@ -10524,7 +10513,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "30394a58-72cd-5c79-b1d5-73336b24bb7b")
 		(property "Reference" "JPL_U09"
 			(at 474.98 125.73 0)
@@ -10536,9 +10525,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 474.98 135.89 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 474.98 133.35 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10547,7 +10535,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 474.98 130.81 0)
 			(hide yes)
 			(show_name no)
@@ -10669,7 +10657,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 546.1 279.4 0)
 		(unit 1)
 		(body_style 1)
@@ -10677,7 +10665,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "315255a2-2a1a-573b-ba4b-873070848a7d")
 		(property "Reference" "JPR_U24"
 			(at 546.1 274.32 0)
@@ -10689,9 +10677,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 546.1 284.48 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 546.1 281.94 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10700,7 +10687,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 546.1 279.4 0)
 			(hide yes)
 			(show_name no)
@@ -10900,7 +10887,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 474.98 49.53 0)
 		(unit 1)
 		(body_style 1)
@@ -10908,7 +10895,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "44d3286d-7702-5368-ab60-e210f0c17671")
 		(property "Reference" "JPL_U01"
 			(at 474.98 44.45 0)
@@ -10920,9 +10907,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 474.98 54.61 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 474.98 52.07 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10931,7 +10917,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 474.98 49.53 0)
 			(hide yes)
 			(show_name no)
@@ -10979,7 +10965,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 474.98 140.97 0)
 		(unit 1)
 		(body_style 1)
@@ -10987,7 +10973,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "47f6ab16-6411-5831-801d-f4a85a1f79a6")
 		(property "Reference" "JPL_U10"
 			(at 474.98 135.89 0)
@@ -10999,9 +10985,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 474.98 146.05 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 474.98 143.51 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11010,7 +10995,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 474.98 140.97 0)
 			(hide yes)
 			(show_name no)
@@ -11058,7 +11043,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 474.98 201.93 0)
 		(unit 1)
 		(body_style 1)
@@ -11066,7 +11051,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "48af4342-3584-5774-a8f2-abe4e70e2683")
 		(property "Reference" "JPL_U16"
 			(at 474.98 196.85 0)
@@ -11078,9 +11063,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 474.98 207.01 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 474.98 204.47 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11089,7 +11073,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 474.98 201.93 0)
 			(hide yes)
 			(show_name no)
@@ -11137,7 +11121,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 474.98 273.05 0)
 		(unit 1)
 		(body_style 1)
@@ -11145,7 +11129,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "4b745bcd-4d36-5750-8db1-fdb409f0b510")
 		(property "Reference" "JPL_U23"
 			(at 474.98 267.97 0)
@@ -11157,9 +11141,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 474.98 278.13 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 474.98 275.59 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11168,7 +11151,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 474.98 273.05 0)
 			(hide yes)
 			(show_name no)
@@ -11216,7 +11199,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 546.1 248.92 0)
 		(unit 1)
 		(body_style 1)
@@ -11224,7 +11207,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "4bd04db7-a968-5464-ad65-313dd0da7a50")
 		(property "Reference" "JPR_U21"
 			(at 546.1 243.84 0)
@@ -11236,9 +11219,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 546.1 254 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 546.1 251.46 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11247,7 +11229,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 546.1 248.92 0)
 			(hide yes)
 			(show_name no)
@@ -11373,7 +11355,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 474.98 321.31 0)
 		(unit 1)
 		(body_style 1)
@@ -11381,7 +11363,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "4ff9292a-5614-5c15-af2e-31ca292c81ba")
 		(property "Reference" "JPL_D2"
 			(at 474.98 316.23 0)
@@ -11393,9 +11375,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 474.98 326.39 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 474.98 323.85 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11404,7 +11385,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 474.98 321.31 0)
 			(hide yes)
 			(show_name no)
@@ -11530,7 +11511,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 546.1 187.96 0)
 		(unit 1)
 		(body_style 1)
@@ -11538,7 +11519,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "573c631b-bf15-55b5-b4a1-136cde6aed97")
 		(property "Reference" "JPR_U15"
 			(at 546.1 182.88 0)
@@ -11550,9 +11531,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 546.1 193.04 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 546.1 190.50 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11561,7 +11541,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 546.1 187.96 0)
 			(hide yes)
 			(show_name no)
@@ -11687,7 +11667,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 474.98 151.13 0)
 		(unit 1)
 		(body_style 1)
@@ -11695,7 +11675,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "602c1842-384c-51f0-bade-76ce1f0e5018")
 		(property "Reference" "JPL_U11"
 			(at 474.98 146.05 0)
@@ -11707,9 +11687,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 474.98 156.21 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 474.98 153.67 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11718,7 +11697,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 474.98 151.13 0)
 			(hide yes)
 			(show_name no)
@@ -11992,7 +11971,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 546.1 127 0)
 		(unit 1)
 		(body_style 1)
@@ -12000,7 +11979,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "662db769-ab1e-52b4-a4f7-900ba9b4837d")
 		(property "Reference" "JPR_U09"
 			(at 546.1 121.92 0)
@@ -12012,9 +11991,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 546.1 132.08 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 546.1 129.54 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12023,7 +12001,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 546.1 127 0)
 			(hide yes)
 			(show_name no)
@@ -12071,7 +12049,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 546.1 116.84 0)
 		(unit 1)
 		(body_style 1)
@@ -12079,7 +12057,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "66baff28-aaf3-5420-bd92-c7c73a20bdf3")
 		(property "Reference" "JPR_U08"
 			(at 546.1 111.76 0)
@@ -12091,9 +12069,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 546.1 121.92 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 546.1 119.38 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12102,7 +12079,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 546.1 116.84 0)
 			(hide yes)
 			(show_name no)
@@ -12150,7 +12127,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 546.1 347.98 0)
 		(unit 1)
 		(body_style 1)
@@ -12158,7 +12135,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "679d1d00-fe85-588d-b191-dcf2b60b7a35")
 		(property "Reference" "JPR_D5"
 			(at 546.1 342.9 0)
@@ -12170,9 +12147,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 546.1 353.06 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 546.1 350.52 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12181,7 +12157,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 546.1 347.98 0)
 			(hide yes)
 			(show_name no)
@@ -12229,7 +12205,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 546.1 167.64 0)
 		(unit 1)
 		(body_style 1)
@@ -12237,7 +12213,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "6bb3cd2a-502a-531c-a045-4905f45f202b")
 		(property "Reference" "JPR_U13"
 			(at 546.1 162.56 0)
@@ -12249,9 +12225,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 546.1 172.72 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 546.1 170.18 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12260,7 +12235,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 546.1 167.64 0)
 			(hide yes)
 			(show_name no)
@@ -12382,7 +12357,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 474.98 100.33 0)
 		(unit 1)
 		(body_style 1)
@@ -12390,7 +12365,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "71d4bd8e-108a-5e48-a11f-dd7615b397e8")
 		(property "Reference" "JPL_U06"
 			(at 474.98 95.25 0)
@@ -12402,9 +12377,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 474.98 105.41 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 474.98 102.87 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12413,7 +12387,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 474.98 100.33 0)
 			(hide yes)
 			(show_name no)
@@ -12539,7 +12513,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 546.1 337.82 0)
 		(unit 1)
 		(body_style 1)
@@ -12547,7 +12521,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "73d5c67c-c617-5a80-8865-92ff3e09f3a7")
 		(property "Reference" "JPR_D4"
 			(at 546.1 332.74 0)
@@ -12559,9 +12533,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 546.1 342.9 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 546.1 340.36 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12570,7 +12543,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 546.1 337.82 0)
 			(hide yes)
 			(show_name no)
@@ -12692,7 +12665,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 546.1 137.16 0)
 		(unit 1)
 		(body_style 1)
@@ -12700,7 +12673,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "764ff4fa-05e2-5b56-b74f-ea25930e5b97")
 		(property "Reference" "JPR_U10"
 			(at 546.1 132.08 0)
@@ -12712,9 +12685,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 546.1 142.24 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 546.1 139.70 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12723,7 +12695,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 546.1 137.16 0)
 			(hide yes)
 			(show_name no)
@@ -13084,7 +13056,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 474.98 262.89 0)
 		(unit 1)
 		(body_style 1)
@@ -13092,7 +13064,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "7a8e2797-5a80-506c-9c14-48a1c94411a7")
 		(property "Reference" "JPL_U22"
 			(at 474.98 257.81 0)
@@ -13104,9 +13076,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 474.98 267.97 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 474.98 265.43 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13115,7 +13086,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 474.98 262.89 0)
 			(hide yes)
 			(show_name no)
@@ -13163,7 +13134,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 474.98 69.85 0)
 		(unit 1)
 		(body_style 1)
@@ -13171,7 +13142,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "7ba34b98-da95-5bf6-b6b7-fd6fea87a019")
 		(property "Reference" "JPL_U03"
 			(at 474.98 64.77 0)
@@ -13183,9 +13154,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 474.98 74.93 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 474.98 72.39 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13194,7 +13164,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 474.98 69.85 0)
 			(hide yes)
 			(show_name no)
@@ -13320,7 +13290,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 474.98 283.21 0)
 		(unit 1)
 		(body_style 1)
@@ -13328,7 +13298,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "7f344a7a-0277-5652-8594-95de8eed3955")
 		(property "Reference" "JPL_U24"
 			(at 474.98 278.13 0)
@@ -13340,9 +13310,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 474.98 288.29 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 474.98 285.75 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13351,7 +13320,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 474.98 283.21 0)
 			(hide yes)
 			(show_name no)
@@ -13626,7 +13595,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 546.1 147.32 0)
 		(unit 1)
 		(body_style 1)
@@ -13634,7 +13603,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "8eb459d9-d80b-543d-9202-d59a31f55f34")
 		(property "Reference" "JPR_U11"
 			(at 546.1 142.24 0)
@@ -13646,9 +13615,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 546.1 152.4 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 546.1 149.86 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13657,7 +13625,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 546.1 147.32 0)
 			(hide yes)
 			(show_name no)
@@ -13779,7 +13747,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 546.1 307.34 0)
 		(unit 1)
 		(body_style 1)
@@ -13787,7 +13755,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "8fdbeff6-41e7-52d4-93d1-9a1b2314f270")
 		(property "Reference" "JPR_D1"
 			(at 546.1 302.26 0)
@@ -13799,9 +13767,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 546.1 312.42 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 546.1 309.88 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13810,7 +13777,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 546.1 307.34 0)
 			(hide yes)
 			(show_name no)
@@ -14322,7 +14289,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 546.1 177.8 0)
 		(unit 1)
 		(body_style 1)
@@ -14330,7 +14297,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "a7e6d636-064e-5e99-bb35-b386912c7b16")
 		(property "Reference" "JPR_U14"
 			(at 546.1 172.72 0)
@@ -14342,9 +14309,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 546.1 182.88 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 546.1 180.34 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -14353,7 +14319,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 546.1 177.8 0)
 			(hide yes)
 			(show_name no)
@@ -14401,7 +14367,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 474.98 90.17 0)
 		(unit 1)
 		(body_style 1)
@@ -14409,7 +14375,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "aadae7f2-e612-5bfd-a1d9-6232795734e0")
 		(property "Reference" "JPL_U05"
 			(at 474.98 85.09 0)
@@ -14421,9 +14387,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 474.98 95.25 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 474.98 92.71 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -14432,7 +14397,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 474.98 90.17 0)
 			(hide yes)
 			(show_name no)
@@ -14480,7 +14445,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 474.98 351.79 0)
 		(unit 1)
 		(body_style 1)
@@ -14488,7 +14453,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "acc2748c-6c0e-5ca4-9f1c-b1d2ac4b628b")
 		(property "Reference" "JPL_D5"
 			(at 474.98 346.71 0)
@@ -14500,9 +14465,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 474.98 356.87 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 474.98 354.33 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -14511,7 +14475,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 474.98 351.79 0)
 			(hide yes)
 			(show_name no)
@@ -14711,7 +14675,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 546.1 66.04 0)
 		(unit 1)
 		(body_style 1)
@@ -14719,7 +14683,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "b119c232-2f4e-5e90-a2c3-fd2b67a79509")
 		(property "Reference" "JPR_U03"
 			(at 546.1 60.96 0)
@@ -14731,9 +14695,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 546.1 71.12 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 546.1 68.58 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -14742,7 +14705,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 546.1 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -15102,7 +15065,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 546.1 228.6 0)
 		(unit 1)
 		(body_style 1)
@@ -15110,7 +15073,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "beb97836-292f-5bed-b4b9-973c7e5d94d3")
 		(property "Reference" "JPR_U19"
 			(at 546.1 223.52 0)
@@ -15122,9 +15085,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 546.1 233.68 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 546.1 231.14 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -15133,7 +15095,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 546.1 228.6 0)
 			(hide yes)
 			(show_name no)
@@ -15868,7 +15830,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 474.98 80.01 0)
 		(unit 1)
 		(body_style 1)
@@ -15876,7 +15838,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "d3aa6add-d8c4-53fa-ac90-b40cbaca350b")
 		(property "Reference" "JPL_U04"
 			(at 474.98 74.93 0)
@@ -15888,9 +15850,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 474.98 85.09 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 474.98 82.55 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -15899,7 +15860,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 474.98 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -15947,7 +15908,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 546.1 55.88 0)
 		(unit 1)
 		(body_style 1)
@@ -15955,7 +15916,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "db774bda-4c2f-5640-8f30-ff4e851c7029")
 		(property "Reference" "JPR_U02"
 			(at 546.1 50.8 0)
@@ -15967,9 +15928,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 546.1 60.96 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 546.1 58.42 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -15978,7 +15938,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 546.1 55.88 0)
 			(hide yes)
 			(show_name no)
@@ -16104,7 +16064,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 474.98 252.73 0)
 		(unit 1)
 		(body_style 1)
@@ -16112,7 +16072,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "de4a7404-1780-51fd-a55b-cd99ba408f90")
 		(property "Reference" "JPL_U21"
 			(at 474.98 247.65 0)
@@ -16124,9 +16084,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 474.98 257.81 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 474.98 255.27 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -16135,7 +16094,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 474.98 252.73 0)
 			(hide yes)
 			(show_name no)
@@ -16405,7 +16364,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 474.98 181.61 0)
 		(unit 1)
 		(body_style 1)
@@ -16413,7 +16372,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "e6f63ab2-7a43-5fdd-a26e-7c23dcfea9a6")
 		(property "Reference" "JPL_U14"
 			(at 474.98 176.53 0)
@@ -16425,9 +16384,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 474.98 186.69 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 474.98 184.15 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -16436,7 +16394,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 474.98 181.61 0)
 			(hide yes)
 			(show_name no)
@@ -16562,7 +16520,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 474.98 212.09 0)
 		(unit 1)
 		(body_style 1)
@@ -16570,7 +16528,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "ea8c6408-0406-5db4-baf7-1958211ae3c9")
 		(property "Reference" "JPL_U17"
 			(at 474.98 207.01 0)
@@ -16582,9 +16540,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 474.98 217.17 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 474.98 214.63 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -16593,7 +16550,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 474.98 212.09 0)
 			(hide yes)
 			(show_name no)
@@ -16715,7 +16672,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 546.1 198.12 0)
 		(unit 1)
 		(body_style 1)
@@ -16723,7 +16680,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "eec59723-0a6d-5f2d-b156-713e330f1829")
 		(property "Reference" "JPR_U16"
 			(at 546.1 193.04 0)
@@ -16735,9 +16692,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 546.1 203.2 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 546.1 200.66 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -16746,7 +16702,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 546.1 198.12 0)
 			(hide yes)
 			(show_name no)
@@ -16950,7 +16906,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 546.1 317.5 0)
 		(unit 1)
 		(body_style 1)
@@ -16958,7 +16914,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "f1988d17-7514-5dbd-b2b7-56a428eb2dec")
 		(property "Reference" "JPR_D2"
 			(at 546.1 312.42 0)
@@ -16970,9 +16926,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 546.1 322.58 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 546.1 320.04 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -16981,7 +16936,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 546.1 317.5 0)
 			(hide yes)
 			(show_name no)
@@ -17185,7 +17140,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 474.98 171.45 0)
 		(unit 1)
 		(body_style 1)
@@ -17193,7 +17148,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "f6db99f9-6ba1-5af5-b8d2-de117e13c730")
 		(property "Reference" "JPL_U13"
 			(at 474.98 166.37 0)
@@ -17205,9 +17160,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 474.98 176.53 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 474.98 173.99 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17216,7 +17170,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 474.98 171.45 0)
 			(hide yes)
 			(show_name no)
@@ -17343,7 +17297,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 546.1 259.08 0)
 		(unit 1)
 		(body_style 1)
@@ -17351,7 +17305,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "fa62416d-7c52-5315-a8a9-9797c2788f82")
 		(property "Reference" "JPR_U22"
 			(at 546.1 254 0)
@@ -17363,9 +17317,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 546.1 264.16 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 546.1 261.62 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17374,7 +17327,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 546.1 259.08 0)
 			(hide yes)
 			(show_name no)
@@ -17500,7 +17453,7 @@
 		)
 	)
 	(symbol
-		(lib_id "REMAKE:Jumper")
+		(lib_id "REMAKE:R_0402_Link")
 		(at 546.1 157.48 0)
 		(unit 1)
 		(body_style 1)
@@ -17508,7 +17461,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "fb4b3223-483a-562d-a7ab-822803d03ab1")
 		(property "Reference" "JPR_U12"
 			(at 546.1 152.4 0)
@@ -17520,9 +17473,8 @@
 				)
 			)
 		)
-		(property "Value" "Bridge selected bank"
-			(at 546.1 162.56 0)
-			(hide yes)
+		(property "Value" "0R"
+			(at 546.1 160.02 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17531,7 +17483,7 @@
 				)
 			)
 		)
-		(property "Footprint" "remake-footprints:SolderJumper_Open"
+		(property "Footprint" "remake-footprints:R_0402_1005Metric_SolderJumper"
 			(at 546.1 157.48 0)
 			(hide yes)
 			(show_name no)

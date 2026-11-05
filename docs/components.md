@@ -16,6 +16,7 @@ The notice is in [LICENSE-KICAD.txt](../cad/components/LICENSE-KICAD.txt).
 |---|---|
 | `JST_PH_2mm_side_entry` | `Connector_JST:JST_PH_S2B-PH-SM4-TB_1x02-1MP_P2.00mm_Horizontal` |
 | `SW_SPST_Panasonic_EVQPUJ02K` | `Button_Switch_SMD:Panasonic_EVQPUJ_EVQPUA` |
+| `R_0402_1005Metric_SolderJumper` | Geometry derived from `Resistor_SMD:R_0402_1005Metric`, adapted for manual bridging |
 
 The JST copy is renamed, hides reference/value fields and omits the unresolved
 3D link; lands are unchanged. The reset copy is renamed and moves clipping silk
@@ -25,6 +26,36 @@ Reset is side-actuated, momentary SPST-NO, without locating bosses.
 Sources: [KiCad footprints](https://gitlab.com/kicad/libraries/kicad-footprints),
 [JST PH drawing](https://www.jst-mfg.com/product/pdf/eng/ePH.pdf),
 [Panasonic EVQPUJ02K](https://industry.panasonic.com/global/en/products/control/switch/light-touch/number/evqpuj02k).
+
+## Dual-use 0402 selection links
+
+The hybrid footprint derives its nominal resistor geometry from KiCad's
+[`R_0402_1005Metric`](https://gitlab.com/kicad/libraries/kicad-footprints/-/blob/master/Resistor_SMD.pretty/R_0402_1005Metric.kicad_mod)
+(installed library format version 20260206). It retains KiCad Library
+Team/contributor attribution and the licence/exception noted above. It is
+not an unmodified standard footprint or a manufacturer-qualified land pattern.
+
+- Resistor body outline: 1.05 × 0.54 mm, centred at the footprint origin.
+- Two rectangular paste apertures: **0.54 × 0.64 mm**, centred at X = ±0.51 mm,
+  matching the nominal standard pad centres and extents; **0.48 mm paste gap**.
+  Rectangular paste replaces the standard footprint's rounded pad apertures.
+- Extended roundrect copper pads: **0.63 × 1.00 mm**, centred at X = ±0.465 mm.
+  These contain the nominal resistor lands and provide extra copper toward
+  the centre for a **0.30 mm hand-solder gap**. Pad 1 is at negative X; pad 2
+  is at positive X. The old routed endpoints remain within the new copper.
+- One filled, zero-stroke mask rectangle joins the pad openings across the
+  gap. Paste is defined independently from copper/mask, so it never spans
+  that gap as a continuous deposit.
+- Courtyard: 2.06 × 1.50 mm. The footprint is defined on F and is flipped
+  normally for the B-side bank; no opposite-side paste is added.
+
+The local `R_0402_Link` symbol uses a resistor body while preserving the old
+passive pin endpoints and the `JPL_*`/`JPR_*` reference scheme. All links are
+DNP in the shared master. The extended copper and rectangular paste are a
+deliberate hybrid: select the actual resistor, obtain assembler DFM feedback,
+and prototype both resistor reflow and manual bridging before treating the
+footprint as production-validated. No particular MPN, current rating, or
+assembly yield is approved by the generic `0R` value.
 
 ## Bundled models
 
