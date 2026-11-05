@@ -37,11 +37,46 @@ class RevisionTests(unittest.TestCase):
     def test_thumb_ordering_and_fan_angles_are_retained(self):
         # Absolute coordinates are editable layout data, not the old placement
         # generator's permanent API. Geometry clearance is checked separately.
-        for ref,angle in [('SW16',-15),('SW17',-30)]:
+        for ref,angle in [('SW18',0),('SW16',-15),('SW17',-30)]:
             f=self.parts[ref]
             self.assertAlmostEqual(f.GetOrientationDegrees(), angle)
         self.assertLess(self.parts['SW18'].GetPosition().x, self.parts['SW16'].GetPosition().x)
         self.assertLess(self.parts['SW16'].GetPosition().x,self.parts['SW17'].GetPosition().x)
+
+    def test_thumb_switch_body_edge_gaps_are_even(self):
+        # Catch SW18 drifting away from SW16. Compare the nearest edges of
+        # the nominal 14 x 14 mm switch bodies, not centre-to-centre pitch:
+        # the fanned switches have different orientations.
+        def body(index):
+            part = self.parts[f'SW{index}']
+            position = part.GetPosition()
+            cx, cy = self.pcbnew.ToMM(position.x), self.pcbnew.ToMM(position.y)
+            angle = math.radians(part.GetOrientationDegrees())
+            return [(cx + x * math.cos(angle) + y * math.sin(angle),
+                     cy - x * math.sin(angle) + y * math.cos(angle))
+                    for x, y in [(-7, -7), (7, -7), (7, 7), (-7, 7)]]
+
+        def point_segment_distance(point, start, end):
+            dx, dy = end[0] - start[0], end[1] - start[1]
+            projection = ((point[0] - start[0]) * dx
+                          + (point[1] - start[1]) * dy) / (dx * dx + dy * dy)
+            fraction = max(0, min(1, projection))
+            return math.hypot(point[0] - start[0] - fraction * dx,
+                              point[1] - start[1] - fraction * dy)
+
+        def gap(first, second):
+            a, b = body(first), body(second)
+            # Bodies are disjoint (also enforced by the larger keycap
+            # envelope test). Their closest points include a vertex.
+            return min(point_segment_distance(point, polygon[i], polygon[(i + 1) % 4])
+                       for vertices, polygon in [(a, b), (b, a)]
+                       for point in vertices for i in range(4))
+
+        gap_18_16, gap_16_17 = gap(18, 16), gap(16, 17)
+        self.assertGreater(gap_18_16, 0)
+        self.assertGreater(gap_16_17, 0)
+        self.assertAlmostEqual(gap_18_16, gap_16_17, delta=0.01,
+                               msg='Thumb switch-body edge gaps must match within 0.01 mm')
 
     def test_selected_keycap_envelopes_do_not_overlap_the_thumb_cluster(self):
         # User-selected17.5x16.5mm outside envelopes, centred on the stems.
