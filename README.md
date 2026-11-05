@@ -96,3 +96,16 @@ expectations.
 Imported third-party component models and library sources retain their
 documented licences and notices. Local-only models with unresolved
 redistribution rights are not covered by the project licence grant.
+
+### Manufacturing and sales
+
+Interested in manufacturing or selling REMAKE boards or kits? I'd love to hear
+from you! Please [open a manufacturing and sales issue](https://github.com/6mil-Labs/remake/issues/new?template=manufacturing-and-sales.yml)
+to discuss revisions, manufacturing feedback, and opportunities to collaborate.
+You can also opt in to a future seller list to help people find bare PCBs, kits,
+or assembled keyboards without building everything themselves.
+
+Commercial manufacture and sale are permitted under [CERN-OHL-S-2.0](LICENSE),
+subject to its requirements. Contacting the maintainer is encouraged, but is not
+a condition of exercising those rights. Third-party products must not be
+presented as officially endorsed without permission.

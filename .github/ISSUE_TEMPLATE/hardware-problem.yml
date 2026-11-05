@@ -1,0 +1,51 @@
+name: Hardware problem
+description: Report a PCB, electrical, or mechanical problem with REMAKE.
+title: "[Hardware] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve REMAKE! Please check existing issues first.
+        Issues and attachments are public; omit private contact details and order information.
+        REMAKE is development hardware. If you suspect a battery or electrical safety problem,
+        disconnect power and do not repeat unsafe tests to complete this report.
+  - type: input
+    id: revision
+    attributes:
+      label: PCB revision or source commit
+      description: Include any modifications. If you do not know the revision, say so.
+    validations:
+      required: true
+  - type: dropdown
+    id: affected-half
+    attributes:
+      label: Affected half
+      options:
+        - Left
+        - Right
+        - Both
+        - Bare PCB or CAD only
+        - Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened, and what did you expect?
+      description: Identify affected components, pads, or mechanical features where possible.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: How can we reproduce or inspect the problem?
+      description: Include the build configuration, relevant parts, and steps already tried. Report only tests that are safe to perform.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Photos, measurements, or reports
+      description: Attach clear photos, measured values, or relevant KiCad DRC/ERC output. For CAD problems, include the KiCad version.
+    validations:
+      required: false

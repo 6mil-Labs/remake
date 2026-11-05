@@ -1,0 +1,38 @@
+name: Assembly help
+description: Ask for help building or understanding REMAKE.
+title: "[Assembly] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please read the [assembly guide](https://github.com/6mil-Labs/remake/blob/HEAD/docs/assembly.md)
+        and check existing issues first. Issues and attachments are public; omit private
+        contact details and order information. Never solder with the battery connected.
+  - type: input
+    id: revision
+    attributes:
+      label: PCB revision or source commit
+      description: Include the half you are building and any modifications. If unsure, say so.
+    validations:
+      required: true
+  - type: textarea
+    id: build
+    attributes:
+      label: Build stage and parts used
+      description: Describe where you are in the assembly process and identify the relevant parts.
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: What do you need help with?
+      description: Tell us what is unclear and what you have already tried.
+    validations:
+      required: true
+  - type: textarea
+    id: photos
+    attributes:
+      label: Photos or other context
+      description: Clear photos of both PCB faces are helpful for jumper and soldering questions.
+    validations:
+      required: false

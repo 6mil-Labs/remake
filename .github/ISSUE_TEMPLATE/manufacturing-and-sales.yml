@@ -1,0 +1,77 @@
+name: I want to manufacture and sell REMAKE
+description: Introduce your shop or project, coordinate plans, and optionally request a seller listing.
+title: "[Manufacturing] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for your interest in manufacturing REMAKE! This form is an optional
+        introduction and a place to coordinate, not a request for permission.
+        Commercial manufacture and sale are permitted under
+        [CERN-OHL-S-2.0](https://github.com/6mil-Labs/remake/blob/HEAD/LICENSE),
+        subject to its requirements. No payment or donation to the maintainer is required.
+        This conversation does not constitute official endorsement.
+
+        REMAKE is development hardware; review the current revision's validation status
+        before manufacturing. Issues are public: share only public-facing details and
+        do not include personal addresses, private email addresses, or confidential plans.
+
+        The maintainer may curate a "Where to buy" list for people looking for bare PCBs,
+        kits, or assembled keyboards. You can opt in below; submitting this form does not
+        automatically add a listing or imply that products have been tested or endorsed.
+  - type: input
+    id: shop-name
+    attributes:
+      label: Shop or project name
+      description: The public-facing name you would like us to use.
+    validations:
+      required: true
+  - type: textarea
+    id: public-links
+    attributes:
+      label: Public shop and product links
+      description: Share a website or product pages, if available. Indicate whether products are planned, available for preorder, or available to buy. You can update these links later.
+    validations:
+      required: false
+  - type: dropdown
+    id: products
+    attributes:
+      label: What do you plan to offer?
+      multiple: true
+      options:
+        - Bare PCBs
+        - Kits
+        - Assembled keyboards
+        - Modified or derivative designs
+        - Other or still deciding
+    validations:
+      required: true
+  - type: input
+    id: revision
+    attributes:
+      label: Revision or source commit under consideration
+      description: If you are making changes, describe them in your plans below. It is fine to be undecided.
+    validations:
+      required: false
+  - type: textarea
+    id: regions
+    attributes:
+      label: Location and shipping regions
+      description: Optionally share your shop's country or region and where customers can order from. Do not provide a street address.
+    validations:
+      required: false
+  - type: textarea
+    id: plans
+    attributes:
+      label: Plans, questions, or collaboration
+      description: Tell us about your plans, modifications, manufacturing feedback, or anything you would like to discuss. No sales forecasts or confidential business details are needed.
+    validations:
+      required: true
+  - type: checkboxes
+    id: seller-listing
+    attributes:
+      label: Optional seller listing
+      description: Listing requests are optional and separate from your rights under the license. If listed, please keep this issue updated when links, products, or availability change.
+      options:
+        - label: I would like my shop or project to be considered for a public "Where to buy" list using the public details and links above.
+          required: false

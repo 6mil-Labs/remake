@@ -1,0 +1,30 @@
+name: Design suggestion
+description: Suggest an improvement to REMAKE hardware, tooling, or documentation.
+title: "[Suggestion] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for sharing an idea! Please check existing issues first.
+        Issues and attachments are public; omit private information.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: Explain who would benefit and how the current design falls short.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed improvement
+      description: Describe your idea and any alternatives you have considered.
+    validations:
+      required: true
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Relevant revision, constraints, or evidence
+      description: Include affected revisions, component dimensions, compatibility needs, sketches, or measurements where relevant.
+    validations:
+      required: false
