@@ -37,6 +37,15 @@
     "modified": false
   },
   {
+    "file": "R_0402_1005Metric.step",
+    "attribution": "kicad StepUp; KiCad Library Team and contributors",
+    "notice": "LICENSE-KICAD.txt",
+    "source": "https://gitlab.com/kicad/libraries/kicad-packages3D/-/raw/8975715167d1a76f9b44be155ac02326f704cdbb/Resistor_SMD.3dshapes/R_0402_1005Metric.step",
+    "sha256": "91507e5af4251cb4ef38e04889c9b98da29904432bd83786bba13ae9b605eacb",
+    "license": "CC-BY-SA-4.0 with KiCad design exception",
+    "modified": false
+  },
+  {
     "file": "SW_MSK12C02.step",
     "attribution": "ebastler/marbastlib contributors",
     "notice": "LICENSE-MARBASTLIB.txt",

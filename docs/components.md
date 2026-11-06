@@ -68,6 +68,7 @@ are normalized to `.step`; upstream URLs retain their original filenames.
 | `SW_Hotswap_Kailh_Choc_V1.step` | perigoso/KiSwitch contributors | [CC-BY-SA-4.0 + KiCad exception](../cad/components/LICENSE-KISWITCH.txt) |
 | `SW_Kailh_Choc_V1.step` | perigoso/KiSwitch contributors | [CC-BY-SA-4.0 + KiCad exception](../cad/components/LICENSE-KISWITCH.txt) |
 | `D_SOD123.step` | KiCad Library Team | [CC-BY-SA-4.0 + KiCad exception](../cad/components/LICENSE-KICAD.txt) |
+| `R_0402_1005Metric.step` | kicad StepUp / KiCad Library Team | [CC-BY-SA-4.0 + KiCad exception](../cad/components/LICENSE-KICAD.txt) |
 | `Panasonic_EVQPUJ_EVQPUA.step` | KiCad Library Team | [CC-BY-SA-4.0 + KiCad exception](../cad/components/LICENSE-KICAD.txt) |
 | `SW_MSK12C02.step` | ebastler/marbastlib contributors | [CERN-OHL-P-2.0](../cad/components/LICENSE-MARBASTLIB.txt) |
 
@@ -77,6 +78,14 @@ still requires their notices. The project licence does not relicense these asset
 
 ## Model limitations
 
+- The 0402 links use a bundled nominal KiCad resistor model with unit scale
+  and zero local offset/rotation. KiCad flips it with the B-side footprint.
+  All links remain DNP in the shared master: enable **SMD models** and
+  **Models marked DNP** in the 3D Viewer's Appearance controls to inspect them.
+  Left/right release previews show only that half's 22-link bank, including
+  the optional display links, by changing DNP only on a temporary preview
+  board. These previews are not factory assembly variants or proof of the
+  exact selected resistor's dimensions.
 - The viewer defaults to the **left assembly**. Right-assembly entries are hidden;
   show only the selected population, not both at once. Their transforms assume
   the 1.6 mm PCB; revisit offsets if thickness changes.

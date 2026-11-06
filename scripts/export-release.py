@@ -54,6 +54,12 @@ def _population(footprint, side, count):
     if name in {'SW_SPST_Panasonic_EVQPUJ02K', 'JST_PH_2mm_side_entry'}:
         active = footprint.IsFlipped() == right
         return (tuple(range(count)) if active else ()), active
+    if name == 'R_0402_1005Metric_SolderJumper':
+        if count != 1:
+            raise ValueError(f'{footprint.GetReference()}: expected one 0402 model, got {count}')
+        # Selection links sit underneath the keys: B for left, F for right.
+        active = footprint.IsFlipped() != right
+        return ((0,) if active else ()), active
     if name == 'nice_view_reversible':
         if count:
             raise ValueError('Display model population needs an explicit assembly mapping')
@@ -83,6 +89,10 @@ def prepare_assembly(root: Path, output: Path, side: str) -> dict:
                     tuple(getattr(m.m_Rotation, a) for a in 'xyz'),
                     tuple(getattr(m.m_Scale, a) for a in 'xyz')) for m in footprint.Models()]
         indices, active = _population(footprint, side, len(records))
+        if str(footprint.GetFPID().GetLibItemName()) == 'R_0402_1005Metric_SolderJumper':
+            # Only this temporary preview board gets a fitted bank. Keep the
+            # checked-out shared master DNP and leave factory variants separate.
+            footprint.SetDNP(not active)
         selected = []
         for index in indices:
             record = records[index]

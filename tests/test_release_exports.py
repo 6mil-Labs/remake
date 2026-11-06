@@ -41,7 +41,7 @@ class ReleaseExportTests(unittest.TestCase):
             coverage = exporter.prepare_assembly(ROOT, output, side)
             board = self.k.LoadBoard(str(output))
             parts = {f.GetReference(): f for f in board.GetFootprints()}
-            self.assertEqual(sum(len(f.Models()) for f in parts.values()), 56)
+            self.assertEqual(sum(len(f.Models()) for f in parts.values()), 78)
             self.assertEqual(len(parts['U1'].Models()), 0)
             self.assertNotIn('cad/local-models', output.read_text())
             self.assertEqual({p['reference'] for p in coverage['omitted']},
@@ -56,11 +56,48 @@ class ReleaseExportTests(unittest.TestCase):
             self.assertEqual(diode.m_Offset.z, -1.6 if side == 'left' else 0)
             power = list(parts['PWR1'].Models())[0]
             self.assertEqual(power.m_Rotation.y, 0 if side == 'left' else 180)
+            links = {ref: f for ref, f in parts.items() if ref.startswith(('JPL_', 'JPR_'))}
+            self.assertEqual(len(links), 44)
+            bank = 'JPL_' if side == 'left' else 'JPR_'
+            for ref, footprint in links.items():
+                with self.subTest(side=side, link=ref):
+                    active = ref.startswith(bank)
+                    self.assertEqual(len(footprint.Models()), 1 if active else 0)
+                    self.assertEqual(footprint.IsDNP(), not active)
+                    if active:
+                        self.assertEqual(footprint.IsFlipped(), side == 'left')
+                        model = list(footprint.Models())[0]
+                        self.assertEqual(Path(model.m_Filename).name, 'R_0402_1005Metric.step')
+            self.assertIn('R_0402_1005Metric.step', coverage['models'])
             for f in board.GetFootprints():
                 for model in f.Models():
                     self.assertEqual(Path(model.m_Filename).parent, ROOT / 'cad/components')
                     self.assertEqual(Path(model.m_Filename).suffix, '.step')
         self.assertEqual((ROOT / 'hw/remake.kicad_pcb').read_bytes(), source)
+
+    def test_master_links_have_visible_project_local_models_without_clearing_dnp(self):
+        # Catch a model linked only in the library, a machine-specific path,
+        # or clearing DNP merely to make components appear in the viewer.
+        library = self.k.FootprintLoad(str(ROOT / 'hw/lib'),
+                                      'R_0402_1005Metric_SolderJumper')
+        board = self.k.LoadBoard(str(ROOT / 'hw/remake.kicad_pcb'))
+        links = [f for f in board.GetFootprints()
+                 if f.GetReference().startswith(('JPL_', 'JPR_'))]
+        self.assertEqual(len(links), 44)
+        for footprint in [library, *links]:
+            with self.subTest(reference=footprint.GetReference()):
+                self.assertEqual(len(footprint.Models()), 1)
+                model = list(footprint.Models())[0]
+                self.assertEqual(model.m_Filename,
+                                 '${KIPRJMOD}/../cad/components/R_0402_1005Metric.step')
+                self.assertTrue(model.m_Show)
+                self.assertEqual(tuple(getattr(model.m_Scale, axis) for axis in 'xyz'),
+                                 (1, 1, 1))
+                self.assertEqual(tuple(getattr(model.m_Offset, axis) for axis in 'xyz'),
+                                 (0, 0, 0))
+                self.assertEqual(tuple(getattr(model.m_Rotation, axis) for axis in 'xyz'),
+                                 (0, 0, 0))
+        self.assertTrue(all(f.IsDNP() for f in links))
 
     def copy_project(self):
         root = self.path / 'project'

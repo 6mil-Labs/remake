@@ -264,6 +264,17 @@
 			(uuid "ffd2acbb-409a-48e8-a815-191c4b9adacd")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:Diode_SOD123_reversible"
 		(layer "F.Cu")
@@ -1513,6 +1524,17 @@
 			(uuid "f772c635-6bce-45d4-9645-c5f608c4c0f0")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:SW_Hotswap_Kailh_Choc_V1_reversible"
 		(layer "F.Cu")
@@ -2881,6 +2903,17 @@
 			(uuid "32db47ac-a730-44d8-bf01-b73aac6e59b2")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:SW_Hotswap_Kailh_Choc_V1_reversible"
 		(layer "F.Cu")
@@ -5388,6 +5421,17 @@
 			(uuid "80096564-d627-4cb6-bea6-cdb87ab2e5be")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:Diode_SOD123_reversible"
 		(layer "F.Cu")
@@ -5981,6 +6025,17 @@
 			(uuid "3a75df38-968e-4f61-a3f3-344cbb4937dc")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:Diode_SOD123_reversible"
 		(layer "F.Cu")
@@ -6277,6 +6332,17 @@
 			(uuid "f501f1ce-153f-437f-bd3f-fb93a7a43387")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:Diode_SOD123_reversible"
 		(layer "F.Cu")
@@ -6734,6 +6800,17 @@
 			(uuid "b33e42d1-25ce-4499-91a2-e5a54fce4bc5")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:R_0402_1005Metric_SolderJumper"
 		(layer "F.Cu")
@@ -6865,6 +6942,17 @@
 			(uuid "ae58002c-ecb3-41b6-b2f2-164ff2b4daa2")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:R_0402_1005Metric_SolderJumper"
 		(layer "F.Cu")
@@ -6996,6 +7084,17 @@
 			(uuid "69a14fda-5a9d-4c1d-91b2-2fdb156f9b9a")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:R_0402_1005Metric_SolderJumper"
 		(layer "F.Cu")
@@ -7127,6 +7226,17 @@
 			(uuid "70d2a4fa-b41f-4570-a949-fecc7859f70f")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:Diode_SOD123_reversible"
 		(layer "F.Cu")
@@ -7421,6 +7531,17 @@
 			(uuid "cb92822f-83cd-4c08-879b-1ce47b5924da")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:R_0402_1005Metric_SolderJumper"
 		(layer "F.Cu")
@@ -7552,6 +7673,17 @@
 			(uuid "272449c7-61db-43e1-b959-ed6967edd643")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:SW_Hotswap_Kailh_Choc_V1_reversible"
 		(layer "F.Cu")
@@ -8487,6 +8619,17 @@
 			(uuid "f42123e1-a8b7-469a-a827-a01000b3ce46")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:R_0402_1005Metric_SolderJumper"
 		(layer "F.Cu")
@@ -8618,6 +8761,17 @@
 			(uuid "89d15579-1d52-4ade-8945-8a0a16accd7f")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:SW_Hotswap_Kailh_Choc_V1_reversible"
 		(layer "F.Cu")
@@ -10659,6 +10813,17 @@
 			(uuid "9aa4d070-71ab-441c-8652-6b4cac0f00d6")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:SW_Hotswap_Kailh_Choc_V1_reversible"
 		(layer "F.Cu")
@@ -11270,6 +11435,17 @@
 			(uuid "54f45ee8-734e-4fcf-8f88-6631ed088d66")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "MountingHole:MountingHole_2.2mm_M2_ISO7380_Pad_TopBottom"
 		(layer "F.Cu")
@@ -12656,6 +12832,17 @@
 			(uuid "6a08c5a0-0eb5-4eb9-826e-7404a145486e")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:Diode_SOD123_reversible"
 		(layer "F.Cu")
@@ -32087,6 +32274,17 @@
 			(uuid "af85f383-6222-4a46-9a9d-7fe1be522075")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:nice_nano_reversible"
 		(layer "F.Cu")
@@ -33631,6 +33829,17 @@
 			(uuid "d90a27fb-2d1c-4242-94cc-31150bc447ca")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:Diode_SOD123_reversible"
 		(layer "F.Cu")
@@ -34405,6 +34614,17 @@
 			(uuid "95918795-90a3-4484-aefe-a3407e8244b7")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "MountingHole:MountingHole_2.2mm_M2_ISO7380_Pad_TopBottom"
 		(layer "F.Cu")
@@ -34835,6 +35055,17 @@
 			(uuid "6841c61f-cde2-4e7e-8cbb-1c976908efe5")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:Diode_SOD123_reversible"
 		(layer "F.Cu")
@@ -35129,6 +35360,17 @@
 			(uuid "17601283-e3ea-4a9c-9aef-b350b2571e45")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:nice_view_reversible"
 		(layer "F.Cu")
@@ -35707,6 +35949,17 @@
 			(uuid "ef02985a-1bb0-49fc-8a44-55590f944028")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:R_0402_1005Metric_SolderJumper"
 		(layer "B.Cu")
@@ -35842,6 +36095,17 @@
 			(uuid "08a7c2dc-c30c-4f14-b7d5-a5c8252b1072")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:R_0402_1005Metric_SolderJumper"
 		(layer "B.Cu")
@@ -35977,6 +36241,17 @@
 			(uuid "42adce49-0a7c-46d7-9664-12a0850a2dab")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:R_0402_1005Metric_SolderJumper"
 		(layer "B.Cu")
@@ -36112,6 +36387,17 @@
 			(uuid "fb1454d0-52dc-498e-b3bc-da9bad7931d7")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:R_0402_1005Metric_SolderJumper"
 		(layer "B.Cu")
@@ -36247,6 +36533,17 @@
 			(uuid "1fddacfa-7feb-4d94-9305-60e3f12241a0")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:R_0402_1005Metric_SolderJumper"
 		(layer "B.Cu")
@@ -36382,6 +36679,17 @@
 			(uuid "f2b6bd83-6430-46f6-b915-55ff1ed8dd58")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:R_0402_1005Metric_SolderJumper"
 		(layer "B.Cu")
@@ -36517,6 +36825,17 @@
 			(uuid "c4b487d2-b07a-4a38-91b8-ebfb817886a9")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:R_0402_1005Metric_SolderJumper"
 		(layer "B.Cu")
@@ -36652,6 +36971,17 @@
 			(uuid "3f983842-bcf2-41fc-80d3-9ec2ff33c4bd")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:R_0402_1005Metric_SolderJumper"
 		(layer "B.Cu")
@@ -36787,6 +37117,17 @@
 			(uuid "6b414ade-3198-411d-a1f1-28df9034cb3d")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:JST_PH_2mm_side_entry"
 		(layer "B.Cu")
@@ -37404,6 +37745,17 @@
 			(uuid "ad099998-4cc7-4fe1-903e-7fff78ef5ac5")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:R_0402_1005Metric_SolderJumper"
 		(layer "B.Cu")
@@ -37539,6 +37891,17 @@
 			(uuid "96b1539e-6a80-41e5-9448-3c729d4867fd")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:R_0402_1005Metric_SolderJumper"
 		(layer "B.Cu")
@@ -37674,6 +38037,17 @@
 			(uuid "416bdffe-4095-4626-8cc7-3dcffa6f58bd")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:R_0402_1005Metric_SolderJumper"
 		(layer "B.Cu")
@@ -37809,6 +38183,17 @@
 			(uuid "5aead411-2ca1-48d4-b53e-c53751f54b57")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:R_0402_1005Metric_SolderJumper"
 		(layer "B.Cu")
@@ -37944,6 +38329,17 @@
 			(uuid "5a75f24f-6f5d-43e1-8251-fb670ea140e6")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:R_0402_1005Metric_SolderJumper"
 		(layer "B.Cu")
@@ -38079,6 +38475,17 @@
 			(uuid "93df3915-aa86-41cc-88cf-741c8abcceb7")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:R_0402_1005Metric_SolderJumper"
 		(layer "B.Cu")
@@ -38214,6 +38621,17 @@
 			(uuid "ae40c186-9f1c-4516-a036-e50ada250bb8")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:R_0402_1005Metric_SolderJumper"
 		(layer "B.Cu")
@@ -38349,6 +38767,17 @@
 			(uuid "632fac1f-9e82-427d-9871-97173bba3236")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:R_0402_1005Metric_SolderJumper"
 		(layer "B.Cu")
@@ -38484,6 +38913,17 @@
 			(uuid "87e313db-7b5f-4573-8f59-4aa859b76cff")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:R_0402_1005Metric_SolderJumper"
 		(layer "B.Cu")
@@ -38619,6 +39059,17 @@
 			(uuid "d49ab1f3-2003-4c5c-9a6b-e76523d1c7f3")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:R_0402_1005Metric_SolderJumper"
 		(layer "B.Cu")
@@ -38754,6 +39205,17 @@
 			(uuid "2e9e411d-2efb-46e0-afd4-e91fca53a12f")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:R_0402_1005Metric_SolderJumper"
 		(layer "B.Cu")
@@ -38889,6 +39351,17 @@
 			(uuid "af7e22cf-abc4-410a-a215-1964813f12b5")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "remake-footprints:R_0402_1005Metric_SolderJumper"
 		(layer "B.Cu")
@@ -39024,6 +39497,17 @@
 			(uuid "83e0e211-3a90-43c6-b5c3-f35d4b4b8520")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../cad/components/R_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(gr_line
 		(start 179.346832 66.015704)
