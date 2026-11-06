@@ -96,6 +96,11 @@ still requires their notices. The project licence does not relicense these asset
   a selected socket or proof of USB, battery or case clearance.
 - Exact SMT PH connector, nice!view, socket-header, protected-battery, keycap and
   case coverage is incomplete. Missing geometry must not be treated as clearance.
+- In particular, SW17's 26.5 × 16.5 mm cap and the relocated lower-corner H2
+  require a physical screw-head/key-travel check. The photo-guided battery
+  arrangement uses a 26 mm **overall lead-plus-plug** measurement; the exact
+  plug engagement and protected-pack outline are not qualified by the current
+  models. See the [layout notes](assembly.md#long-thumb-key-and-battery-bay-layout).
 - The MSK12C02-HB model shows a mechanical candidate only. It does not approve
   another variant's actuator, terminal layout or electrical current rating.
 

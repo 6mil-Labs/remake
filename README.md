@@ -11,9 +11,11 @@ reversible PCB: manufacture **two separate, identical boards** and populate
 them in opposite orientations. No panelization or mouse bites are required.
 
 > **Development hardware — do not fabricate yet.** The current design has
-> **18 keys per half / 36 total.** Routing and ground pours are complete, and
-> the outline is closed and tangent. The thumb cluster is lowered by 2 mm;
-> 17.5×16.5 mm keycap envelopes have a minimum 0.676 mm thumb-to-row gap.
+> **18 keys per half / 36 total.** Routing is complete, ground pours are filled,
+> and the outline is closed and
+> tangent. SW17 supports a **26.5×16.5 mm cap**, rotated
+> 90° relative to its original thumb fan; other caps use **17.5×16.5 mm** envelopes.
+> The minimum nominal thumb-to-row gap is approximately **0.660 mm**.
 > Production tolerances and moving-key fit have not been physically validated.
 > Component selection and physical validation are incomplete. Firmware
 > lives in a separate repository and has not been built or validated here.

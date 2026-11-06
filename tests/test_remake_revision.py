@@ -37,24 +37,26 @@ class RevisionTests(unittest.TestCase):
     def test_thumb_ordering_and_fan_angles_are_retained(self):
         # Absolute coordinates are editable layout data, not the old placement
         # generator's permanent API. Geometry clearance is checked separately.
-        for ref,angle in [('SW18',0),('SW16',-15),('SW17',-30)]:
+        for ref,angle in [('SW18',0),('SW16',-15),('SW17',-120)]:
             f=self.parts[ref]
             self.assertAlmostEqual(f.GetOrientationDegrees(), angle)
         self.assertLess(self.parts['SW18'].GetPosition().x, self.parts['SW16'].GetPosition().x)
         self.assertLess(self.parts['SW16'].GetPosition().x,self.parts['SW17'].GetPosition().x)
 
-    def test_thumb_switch_body_edge_gaps_are_even(self):
-        # Catch SW18 drifting away from SW16. Compare the nearest edges of
-        # the nominal 14 x 14 mm switch bodies, not centre-to-centre pitch:
-        # the fanned switches have different orientations.
-        def body(index):
+    def test_mixed_thumb_keycap_edge_gaps_remain_clear_and_similar(self):
+        # SW17 now has the user's long cap, rotated 90 degrees relative to
+        # its fan. Compare real cap envelopes rather than 14 mm switch bodies.
+        def cap(index):
             part = self.parts[f'SW{index}']
             position = part.GetPosition()
             cx, cy = self.pcbnew.ToMM(position.x), self.pcbnew.ToMM(position.y)
             angle = math.radians(part.GetOrientationDegrees())
+            half_width = 13.25 if index == 17 else 8.75
+            half_height = 8.25
             return [(cx + x * math.cos(angle) + y * math.sin(angle),
                      cy - x * math.sin(angle) + y * math.cos(angle))
-                    for x, y in [(-7, -7), (7, -7), (7, 7), (-7, 7)]]
+                    for x, y in [(-half_width, -half_height), (half_width, -half_height),
+                                 (half_width, half_height), (-half_width, half_height)]]
 
         def point_segment_distance(point, start, end):
             dx, dy = end[0] - start[0], end[1] - start[1]
@@ -65,29 +67,30 @@ class RevisionTests(unittest.TestCase):
                               point[1] - start[1] - fraction * dy)
 
         def gap(first, second):
-            a, b = body(first), body(second)
-            # Bodies are disjoint (also enforced by the larger keycap
-            # envelope test). Their closest points include a vertex.
+            a, b = cap(first), cap(second)
+            # Caps are disjoint (also enforced by the overlap test below).
+            # Their closest points include a vertex.
             return min(point_segment_distance(point, polygon[i], polygon[(i + 1) % 4])
                        for vertices, polygon in [(a, b), (b, a)]
                        for point in vertices for i in range(4))
 
         gap_18_16, gap_16_17 = gap(18, 16), gap(16, 17)
-        self.assertGreater(gap_18_16, 0)
-        self.assertGreater(gap_16_17, 0)
-        self.assertAlmostEqual(gap_18_16, gap_16_17, delta=0.01,
-                               msg='Thumb switch-body edge gaps must match within 0.01 mm')
+        self.assertGreaterEqual(gap_18_16, 0.5)
+        self.assertGreaterEqual(gap_16_17, 0.5)
+        self.assertAlmostEqual(gap_18_16, gap_16_17, delta=0.25,
+                               msg='Mixed thumb-cap gaps should remain visually similar')
 
     def test_selected_keycap_envelopes_do_not_overlap_the_thumb_cluster(self):
-        # User-selected17.5x16.5mm outside envelopes, centred on the stems.
+        # User-selected 17.5x16.5mm caps, except the 26.5x16.5mm SW17 cap.
         # This is a nominal plan-view check, not a tolerance/travel validation.
         def cap(index):
             part=self.parts[f'SW{index}'];p=part.GetPosition()
             cx,cy=self.pcbnew.ToMM(p.x),self.pcbnew.ToMM(p.y)
             angle=math.radians(part.GetOrientationDegrees())
+            width = 13.25 if index == 17 else 8.75
             return [(cx+x*math.cos(angle)+y*math.sin(angle),
                      cy-x*math.sin(angle)+y*math.cos(angle))
-                    for x,y in [(-8.75,-8.25),(8.75,-8.25),(8.75,8.25),(-8.75,8.25)]]
+                    for x,y in [(-width,-8.25),(width,-8.25),(width,8.25),(-width,8.25)]]
 
         def overlap(a,b):
             for shape in [a,b]:
