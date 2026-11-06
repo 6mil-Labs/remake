@@ -729,7 +729,7 @@
     ]
   ],
   "text_variables": {
-    "REVISION": "0.2-RC2"
+    "REVISION": "0.2-RC3"
   },
   "tuning_profiles": {
     "meta": {

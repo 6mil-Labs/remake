@@ -133,7 +133,7 @@
 			(outputdirectory "")
 		)
 	)
-	(property "REVISION" "0.2-RC2")
+	(property "REVISION" "0.2-RC3")
 	(footprint "remake-footprints:R_0402_1005Metric_SolderJumper"
 		(layer "F.Cu")
 		(uuid "02c4b3b7-ce6c-5d23-9b63-5480d8bb6188")

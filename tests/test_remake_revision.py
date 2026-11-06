@@ -241,7 +241,7 @@ class RevisionTests(unittest.TestCase):
 
     def test_revision_and_author_metadata_are_shared_by_pcb_and_schematic(self):
         project = json.loads((ROOT / 'hw/remake.kicad_pro').read_text())
-        self.assertEqual(project['text_variables'].get('REVISION'), '0.2-RC2')
+        self.assertEqual(project['text_variables'].get('REVISION'), '0.2-RC3')
         title = self.board.GetTitleBlock()
         self.assertEqual(title.GetTitle(), 'REMAKE')
         self.assertEqual(title.GetRevision(), '${REVISION}')
