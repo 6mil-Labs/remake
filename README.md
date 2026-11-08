@@ -10,7 +10,14 @@ outline follows the column stagger and thumb fan. Both halves use the same
 reversible PCB: manufacture **two separate, identical boards** and populate
 them in opposite orientations. No panelization or mouse bites are required.
 
-> **Development hardware — do not fabricate yet.** The current design has
+## Revision validation status
+
+| Revision | Status |
+|---|---|
+| REV 0.1 | Fully validated |
+| REV 0.2 | Under development |
+
+> **REV 0.2: development hardware — do not fabricate yet.** The current design has
 > **18 keys per half / 36 total.** Routing is complete, ground pours are filled,
 > and the outline is closed and
 > tangent. SW17 supports a **26.5×16.5 mm cap**, rotated
