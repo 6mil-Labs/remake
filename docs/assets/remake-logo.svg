@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg"
- width="1774" height="887" viewBox="0 0 1774 887"
+ width="1729" height="360" viewBox="25 245 1729 360"
  preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="title description">
 <title id="title">REMAKE keyboard logo</title>
-<desc id="description">Brush-style REMAKE lettering across six alternating outlined and solid black rounded keycaps on a white background.</desc>
+<desc id="description">Brush-style REMAKE lettering across six alternating outlined and solid black rounded keycaps on a transparent background.</desc>
 <metadata>
 Created by potrace 1.16, written by Peter Selinger 2001-2019
 </metadata>
-<rect width="1774" height="887" fill="#ffffff"/>
 <g transform="translate(0.000000,887.000000) scale(0.100000,-0.100000)"
 fill="#000000" stroke="none">
 <path d="M836 6218 c-165 -16 -313 -144 -366 -317 -19 -61 -20 -99 -20 -1277
