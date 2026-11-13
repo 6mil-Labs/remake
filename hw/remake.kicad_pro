@@ -584,7 +584,7 @@
       "netlist": "",
       "plot": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "remake.step",
       "vrml": ""
     },
     "page_layout_descr_file": ""

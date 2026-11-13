@@ -19,8 +19,9 @@ them in opposite orientations. No panelization or mouse bites are required.
 
 > **REV 0.2: development hardware — do not fabricate yet.** The current design has
 > **18 keys per half / 36 total.** Routing is complete, ground pours are filled,
-> and the outline is closed and
-> tangent. SW17 supports a **26.5×16.5 mm cap**, rotated
+> and the outline is closed and straight-edged, with a nominal **3.5 mm
+> switch-body margin** around the key matrix. Fillets are deferred. SW17's
+> larger PCB envelope contains a **26.5×16.5 mm cap**, rotated
 > 90° relative to its original thumb fan; other caps use **17.5×16.5 mm** envelopes.
 > The minimum nominal thumb-to-row gap is approximately **0.660 mm**.
 > Production tolerances and moving-key fit have not been physically validated.
