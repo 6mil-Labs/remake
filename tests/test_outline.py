@@ -68,6 +68,21 @@ class OutlineTests(unittest.TestCase):
             self.assertTrue(a.x == b.x or a.y == b.y,
                             f'Non-orthogonal matrix edge: {a} to {b}')
 
+    def test_thumb_bottom_runs_retain_zero_fifteen_and_thirty_degree_directions(self):
+        # Probe each existing thumb-side run, independently of STEP edge numbers
+        # or drawing UUIDs. Keep the intended directions, not near-parallel edges
+        # produced by dragging one endpoint. Allow nanometre coordinate rounding.
+        lines = [edge for edge in self.edges if edge.GetShapeStr() == 'Line']
+        for point, expected in [((149, 128), 0), ((168, 130.5), 15), ((183, 137), 30)]:
+            with self.subTest(degrees=expected):
+                edge = min(lines, key=lambda line: self.point_to_segment_distance(
+                    point,
+                    tuple(self.pcbnew.ToMM(v) for v in [line.GetStart().x, line.GetStart().y]),
+                    tuple(self.pcbnew.ToMM(v) for v in [line.GetEnd().x, line.GetEnd().y])))
+                a, b = edge.GetStart(), edge.GetEnd()
+                angle = math.degrees(math.atan2(b.y - a.y, b.x - a.x)) % 180
+                self.assertAlmostEqual(angle, expected, delta=0.00001)
+
     @staticmethod
     def point_to_segment_distance(point, start, end):
         dx, dy = end[0] - start[0], end[1] - start[1]
