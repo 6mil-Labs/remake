@@ -86,11 +86,12 @@ python3 -m unittest discover -s tests -v
 Pushing a tag runs the same required CI on that exact commit. Only after CI
 and fabrication packaging succeed does the workflow create a **draft** GitHub
 Release containing one-design JLCPCB fabrication ZIP, a schematic PDF,
-left/right PNG and STEP previews, case-body STEP files for v0.2 and v1.0,
+left/right PNG and STEP previews, compatible Case v1.0 body STEP files,
 model-coverage notes and checksums. These files are separate attachments, never
 additional designs inside the JLCPCB ZIP. The STEP assemblies are partial;
 check their coverage notes before case design. Branch/PR CI also exports the
-case solids as the `case-steps` artifact, including on case-only changes.
+case solids for both case versions as the `case-steps` artifact, including on
+case-only changes. PCB v0.3 uses Case v1.0; case and PCB revision numbers differ.
 Review and publish the draft manually; failed, cancelled or skipped prerequisites
 block release creation. Passing CI is not physical/fabrication approval.
 

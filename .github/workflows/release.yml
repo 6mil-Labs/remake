@@ -64,7 +64,12 @@ jobs:
         uses: actions/download-artifact@v8
         with:
           name: case-steps
-          path: build/release
+          path: build/cases
+
+      # PCB v0.3 uses the Case v1.0 outline. Case revision numbers are separate.
+      - name: Select Case v1.0 for this PCB revision
+        run: |
+          cp build/cases/case-v1.0-left.step build/cases/case-v1.0-right.step build/release/
 
       # ONE bare-PCB Gerber/drill set only. Left/right previews stay outside this ZIP.
       - name: Validate exports and create fabrication ZIP
@@ -76,7 +81,6 @@ jobs:
           sha256sum remake-jlcpcb.zip remake-schematic.pdf \
             remake-left.png remake-right.png remake-left.step remake-right.step \
             remake-model-coverage.json \
-            case-v0.2-left.step case-v0.2-right.step \
             case-v1.0-left.step case-v1.0-right.step > SHA256SUMS
 
       - name: Save release assets
@@ -91,8 +95,6 @@ jobs:
             build/release/remake-left.step
             build/release/remake-right.step
             build/release/remake-model-coverage.json
-            build/release/case-v0.2-left.step
-            build/release/case-v0.2-right.step
             build/release/case-v1.0-left.step
             build/release/case-v1.0-right.step
             build/release/SHA256SUMS
@@ -126,7 +128,7 @@ jobs:
           import re
           expected = {'remake-jlcpcb.zip', 'remake-schematic.pdf', 'remake-left.png',
                       'remake-right.png', 'remake-left.step', 'remake-right.step',
-                      'remake-model-coverage.json', 'case-v0.2-left.step', 'case-v0.2-right.step',
+                      'remake-model-coverage.json',
                       'case-v1.0-left.step', 'case-v1.0-right.step'}
           lines = Path('SHA256SUMS').read_text().splitlines()
           matches = [re.fullmatch(r'[0-9a-f]{64}  ([A-Za-z0-9_.-]+)', line) for line in lines]
@@ -165,7 +167,7 @@ jobs:
             echo "A draft or published release already exists for this tag; refusing to create another." >&2
             exit 1
           fi
-          printf 'Fabrication and design exports for REMAKE.\n\nChecked commit: %s\n\nThe JLCPCB ZIP contains ONE PCB design. Use two identical copies per keyboard. PDF, PNG and STEP exports are separate attachments.\n\nremake-*.step/PNG assembly geometry is partial and uses redistributable models only; read remake-model-coverage.json for omissions, notices and coordinate conventions. Verify actual controller/display/header/battery/keycap geometry before case design.\n\ncase-v*-left.step and case-v*-right.step contain only the final case solids in their CAD coordinate frames. Select the case version matching your PCB.\n\nCI passed before this draft was created. Review all outputs and hardware validation status before publishing or ordering.\n' \
+          printf 'Fabrication and design exports for REMAKE.\n\nChecked commit: %s\n\nThe JLCPCB ZIP contains ONE PCB design. Use two identical copies per keyboard. PDF, PNG and STEP exports are separate attachments.\n\nremake-*.step/PNG assembly geometry is partial and uses redistributable models only; read remake-model-coverage.json for omissions, notices and coordinate conventions. Verify actual controller/display/header/battery/keycap geometry before case design.\n\nPCB v0.3 uses Case v1.0. case-v1.0-left.step and case-v1.0-right.step contain only the compatible final case solids in their CAD coordinate frames.\n\nCI passed before this draft was created. Review all outputs and hardware validation status before publishing or ordering.\n' \
             "$CHECKED_COMMIT" > build/release/notes.md
           gh release create --draft --verify-tag \
             --title "REMAKE $RELEASE_TAG" \
@@ -178,8 +180,6 @@ jobs:
             build/release/remake-left.step \
             build/release/remake-right.step \
             build/release/remake-model-coverage.json \
-            build/release/case-v0.2-left.step \
-            build/release/case-v0.2-right.step \
             build/release/case-v1.0-left.step \
             build/release/case-v1.0-right.step \
             build/release/SHA256SUMS

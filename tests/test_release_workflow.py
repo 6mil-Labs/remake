@@ -11,8 +11,7 @@ import unittest
 
 
 ROOT = Path(__file__).resolve().parents[1]
-CASE_FILES = ['case-v0.2-left.step', 'case-v0.2-right.step',
-              'case-v1.0-left.step', 'case-v1.0-right.step']
+CASE_FILES = ['case-v1.0-left.step', 'case-v1.0-right.step']
 
 
 def run_step(name):
@@ -119,6 +118,21 @@ class DraftCreationTests(unittest.TestCase):
                      'remake-right.png', 'remake-left.step', 'remake-right.step',
                      'remake-model-coverage.json', 'SHA256SUMS', *CASE_FILES]:
             self.assertIn('build/release/' + name, args)
+        for name in ['case-v0.2-left.step', 'case-v0.2-right.step']:
+            self.assertNotIn('build/release/' + name, args)
+
+    def test_release_selects_case_1_0_without_including_case_0_2(self):
+        cases = self.root / 'build/cases'
+        cases.mkdir()
+        for name in [*CASE_FILES, 'case-v0.2-left.step', 'case-v0.2-right.step']:
+            (cases / name).write_text('geometry ' + name)
+        result = subprocess.run(['bash', '-ec', run_step('Select Case v1.0 for this PCB revision')],
+                                cwd=self.root, capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        folder = self.root / 'build/release'
+        self.assertEqual({p.name for p in folder.iterdir()}, set(CASE_FILES))
+        for name in CASE_FILES:
+            self.assertEqual((folder / name).read_bytes(), (cases / name).read_bytes())
 
     def test_checksum_gate_detects_tampering_in_non_fabrication_assets(self):
         assets = ['remake-jlcpcb.zip', 'remake-schematic.pdf', 'remake-left.png',
@@ -168,7 +182,7 @@ class DraftCreationTests(unittest.TestCase):
         checked = subprocess.run(['bash', '-ec', run_step('Verify downloaded release checksums')],
                                  cwd=folder, capture_output=True, text=True)
         self.assertEqual(checked.returncode, 0, checked.stderr)
-        (folder / 'case-v0.2-right.step').write_text('tampered case')
+        (folder / 'case-v1.0-right.step').write_text('tampered case')
         checked = subprocess.run(['bash', '-ec', run_step('Verify downloaded release checksums')],
                                  cwd=folder, capture_output=True, text=True)
         self.assertNotEqual(checked.returncode, 0)

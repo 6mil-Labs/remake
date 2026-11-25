@@ -62,8 +62,8 @@ release tag. Review all outputs and physical-validation gates before publishing.
 
 Separate release attachments are the fabrication ZIP, `remake-schematic.pdf`,
 `remake-left.png`, `remake-right.png`, `remake-left.step`, `remake-right.step`,
-`remake-model-coverage.json`, `case-v0.2-left.step`, `case-v0.2-right.step`,
-`case-v1.0-left.step`, `case-v1.0-right.step` and `SHA256SUMS`. The checksum gate
+`remake-model-coverage.json`, `case-v1.0-left.step`, `case-v1.0-right.step` and
+`SHA256SUMS`. **PCB v0.3 uses Case v1.0**, not Case v0.2. The checksum gate
 requires and verifies every payload before draft creation. None of the previews
 or case exports go in the JLCPCB ZIP.
 
@@ -75,8 +75,9 @@ licences/notices. Do not design a tight case without checking the real stack.
 
 Case STEP files contain only the final `Body` (left) or `Right` mirror from
 the matching `cad/case/Case-v*.FCStd` source, preserving CAD placement. They
-exclude PCB/component models and construction geometry. Select the version
-matching your PCB. CI uses checksum-pinned FreeCAD 1.1.4, recomputes each case,
+exclude PCB/component models and construction geometry. Branch CI exports both
+case versions; the release workflow selects only Case v1.0 for PCB v0.3.
+CI uses checksum-pinned FreeCAD 1.1.4, recomputes each case,
 rejects invalid/disconnected solids, and reads each STEP back to verify its
 volume and surface area within one part per million. Native validation can
 still flag tiny edges in the source; these exports are not physical-fit approval.
