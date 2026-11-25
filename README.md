@@ -15,7 +15,7 @@ them in opposite orientations. No panelization or mouse bites are required.
 | Revision | Status |
 |---|---|
 | REV 0.1 | Fully validated |
-| REV 0.2 | Verified on hardware; in active use |
+| REV 0.2 | Fully validated |
 | [REV 0.3](https://github.com/6mil-Labs/remake/releases/tag/v0.3) | Current prerelease; physical validation remains required |
 
 > **REV 0.3 is prototype hardware, not production-fit or safety certification.** The current design has
