@@ -37,6 +37,9 @@ fp-info-cache
 /hw/*.step
 /hw/production/
 
+# FreeCad backup
+*.FCBak
+
 # Python tooling caches
 __pycache__/
 *.pyc
