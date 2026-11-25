@@ -15,18 +15,34 @@ them in opposite orientations. No panelization or mouse bites are required.
 | Revision | Status |
 |---|---|
 | REV 0.1 | Fully validated |
-| REV 0.2 | Under development |
+| REV 0.2 | Verified on hardware; in active use |
+| [REV 0.3](https://github.com/6mil-Labs/remake/releases/tag/v0.3) | Current prerelease; physical validation remains required |
 
-> **REV 0.2: development hardware — do not fabricate yet.** The current design has
+> **REV 0.3 is prototype hardware, not production-fit or safety certification.** The current design has
 > **18 keys per half / 36 total.** Routing is complete, ground pours are filled,
-> and the outline is closed and straight-edged, with a nominal **3.5 mm
-> switch-body margin** around the key matrix. Fillets are deferred. SW17's
+> and the outline is closed with straight runs and circular fillets, with at least
+> **3.5 mm nominal switch-body margin** around the key matrix. SW17's
 > larger PCB envelope contains a **26.5×16.5 mm cap**, rotated
 > 90° relative to its original thumb fan; other caps use **17.5×16.5 mm** envelopes.
 > The minimum nominal thumb-to-row gap is approximately **0.660 mm**.
 > Production tolerances and moving-key fit have not been physically validated.
-> Component selection and physical validation are incomplete. Firmware
-> lives in a separate repository and has not been built or validated here.
+> Component selection and physical validation are incomplete. The battery
+> receptacles moved **4 mm upward** to improve lead reach. **PCB v0.3 uses
+> Case v1.0**, not Case v0.2. Firmware is maintained and tested separately.
+
+## v0.3 release and editable sources
+
+- [Published v0.3 prerelease](https://github.com/6mil-Labs/remake/releases/tag/v0.3):
+  fabrication ZIP, schematic PDF, assembly PNG/STEP previews, Case v1.0 left/right
+  STEP bodies, model-coverage notes, and `SHA256SUMS`.
+- [Tagged v0.3 sources](https://github.com/6mil-Labs/remake/tree/v0.3): editable
+  KiCad project/schematic/PCB and FreeCAD case sources. GitHub's source archives
+  on the release page contain these files; Gerbers and STEP exports are not a
+  replacement for the editable sources.
+
+Use two identical PCBs per keyboard. Keep assembly models (`remake-*.step`)
+separate from case bodies (`case-v1.0-*.step`), and review model omissions and
+physical-fit requirements before fabrication or assembly.
 
 ## Repository layout
 
@@ -56,6 +72,15 @@ Read [assembly](docs/assembly.md) before building. The
 [component reference](docs/components.md) records sources, licences and model
 limitations; a rendering is not proof of fit. The regression suite checks
 schematic-to-PCB associations separately from electrical parity.
+
+## Firmware
+
+[REMAKE Miryoku](https://github.com/6mil-Labs/remake-miryoku) contains the
+RMK-based firmware, complete keyboard configuration, build/flash instructions,
+and native tests. It provides left/central and right/peripheral UF2 images;
+flash matching builds to both nice!nano v2 controllers. Firmware is versioned
+separately from the PCB: use its documented REMAKE pin mapping and check the
+actual assembly. Hardware CI does not build or certify the firmware.
 
 ## Checks
 
@@ -97,6 +122,18 @@ block release creation. Passing CI is not physical/fabrication approval.
 
 See [manufacturing and release details](docs/manufacturing.md) for archive
 contents, validation limits and retry behavior.
+
+## OSHWA certification
+
+REMAKE is **not yet OSHWA-certified**. Open-source licensing, passing CI, and
+the generic open-hardware gear logo are not the OSHWA certification mark.
+
+The [submission guide](docs/oshwa.md) documents the standard-library Python
+helper, API-token signup, and editable application template. Preview is offline
+by default; submitting requires explicit legal declarations and `--submit`.
+Point an application at the public source/release version being certified, not
+an unpublished future v1.0. Wait for OSHWA approval and a UID before using the
+certification mark on a PCB.
 
 ## Contributing and licensing
 
