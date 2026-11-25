@@ -37,6 +37,9 @@ check the actual PCB/library references first.
 
 REMAKE's project-authored materials are copyright Felipe Balbi and licensed
 under CERN-OHL-S-2.0; see [COPYRIGHT](COPYRIGHT) and [LICENSE](LICENSE).
+Project-authored written documentation and original documentation illustrations
+are additionally offered under [CC-BY-SA-4.0](LICENSE-DOCUMENTATION.md), without
+withdrawing the existing CERN-OHL-S-2.0 grant.
 Imported components keep their separate licences and redistribution limits.
 
 ## Release tooling

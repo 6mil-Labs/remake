@@ -143,6 +143,9 @@ expectations.
 **Copyright © 2026 Felipe Balbi.** REMAKE is licensed under the
 **CERN Open Hardware Licence Version 2 — Strongly Reciprocal**
 ([CERN-OHL-S-2.0](LICENSE)); see [COPYRIGHT](COPYRIGHT) for the project notice.
+Project-authored written documentation and original documentation illustrations
+are additionally available under [CC-BY-SA-4.0](LICENSE-DOCUMENTATION.md), at
+your option. Hardware/design files retain their existing licence.
 Imported third-party component models and library sources retain their
 documented licences and notices. Local-only models with unresolved
 redistribution rights are not covered by the project licence grant.

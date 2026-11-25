@@ -6,6 +6,14 @@ The REMAKE hardware design and project-authored sources, documentation and
 artwork are licensed under the CERN Open Hardware Licence Version 2 -
 Strongly Reciprocal. The complete licence text is in LICENSE.
 
+Project-authored written documentation and original documentation illustrations
+are additionally offered under CC-BY-SA-4.0. The existing CERN-OHL-S-2.0 grant
+is retained; this material may be used under either licence
+(SPDX-License-Identifier: CERN-OHL-S-2.0 OR CC-BY-SA-4.0).
+See LICENSE-DOCUMENTATION.md for scope and the full licence reference. This
+additional grant does not relicense hardware/design files, firmware or tooling
+source code, or third-party material.
+
 Imported third-party component models and library sources retain their own
 copyrights, licences and notices. This project licence does not relicense
 those assets or grant redistribution rights for local-only assets in
