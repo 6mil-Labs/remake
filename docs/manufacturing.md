@@ -62,15 +62,37 @@ release tag. Review all outputs and physical-validation gates before publishing.
 
 Separate release attachments are the fabrication ZIP, `remake-schematic.pdf`,
 `remake-left.png`, `remake-right.png`, `remake-left.step`, `remake-right.step`,
-`remake-model-coverage.json` and `SHA256SUMS`. The checksum gate requires and
-verifies every payload before draft creation. None of the previews go in the
-JLCPCB ZIP.
+`remake-model-coverage.json`, `case-v0.2-left.step`, `case-v0.2-right.step`,
+`case-v1.0-left.step`, `case-v1.0-right.step` and `SHA256SUMS`. The checksum gate
+requires and verifies every payload before draft creation. None of the previews
+or case exports go in the JLCPCB ZIP.
 
-PNGs show each half's typing face. STEP files use the **same native PCB frame**;
-the right population is on B, so flip the entire imported right assembly to
-put its typing face upward. Both are **partial mechanical models**: the coverage
+PNGs show each half's typing face. The `remake-*.step` assembly files use the
+**same native PCB frame**; the right population is on B, so flip the entire
+imported right assembly to put its typing face upward. Both are **partial mechanical models**: the coverage
 JSON identifies missing geometry, the provisional controller gap and model
 licences/notices. Do not design a tight case without checking the real stack.
+
+Case STEP files contain only the final `Body` (left) or `Right` mirror from
+the matching `cad/case/Case-v*.FCStd` source, preserving CAD placement. They
+exclude PCB/component models and construction geometry. Select the version
+matching your PCB. CI uses checksum-pinned FreeCAD 1.1.4, recomputes each case,
+rejects invalid/disconnected solids, and reads each STEP back to verify its
+volume and surface area within one part per million. Native validation can
+still flag tiny edges in the source; these exports are not physical-fit approval.
+
+To export locally with the FreeCAD Python modules available:
+
+```sh
+PYTHONPATH=/usr/lib/freecad/lib python3 scripts/export-cases.py build/cases
+# Export only v0.2 into a different, new directory:
+PYTHONPATH=/usr/lib/freecad/lib python3 scripts/export-cases.py build/case-v0.2 --version v0.2
+```
+
+The module path varies by installation. For the official extracted AppImage,
+use `PYTHONPATH=/path/to/squashfs-root/usr/lib /path/to/squashfs-root/AppRun python`
+instead of the system Python command. The output directory must not exist;
+failure leaves no partial bundle and the CAD sources are never saved.
 
 When distributing boards or source, provide the source/source-location
 information required by [CERN-OHL-S-2.0](../LICENSE).

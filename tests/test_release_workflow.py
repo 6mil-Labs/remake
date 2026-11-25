@@ -11,6 +11,8 @@ import unittest
 
 
 ROOT = Path(__file__).resolve().parents[1]
+CASE_FILES = ['case-v0.2-left.step', 'case-v0.2-right.step',
+              'case-v1.0-left.step', 'case-v1.0-right.step']
 
 
 def run_step(name):
@@ -115,13 +117,13 @@ class DraftCreationTests(unittest.TestCase):
         args = json.loads((self.root / 'created.json').read_text())
         for name in ['remake-jlcpcb.zip', 'remake-schematic.pdf', 'remake-left.png',
                      'remake-right.png', 'remake-left.step', 'remake-right.step',
-                     'remake-model-coverage.json', 'SHA256SUMS']:
+                     'remake-model-coverage.json', 'SHA256SUMS', *CASE_FILES]:
             self.assertIn('build/release/' + name, args)
 
     def test_checksum_gate_detects_tampering_in_non_fabrication_assets(self):
         assets = ['remake-jlcpcb.zip', 'remake-schematic.pdf', 'remake-left.png',
                   'remake-right.png', 'remake-left.step', 'remake-right.step',
-                  'remake-model-coverage.json']
+                  'remake-model-coverage.json', *CASE_FILES]
         folder = self.root / 'build/release'
         for name in assets:
             (folder / name).write_text('fixture ' + name)
@@ -139,7 +141,7 @@ class DraftCreationTests(unittest.TestCase):
         folder = self.root / 'build/release'
         for name in ['remake-jlcpcb.zip', 'remake-schematic.pdf', 'remake-left.png',
                      'remake-right.png', 'remake-left.step', 'remake-right.step',
-                     'remake-model-coverage.json']:
+                     'remake-model-coverage.json', *CASE_FILES]:
             (folder / name).write_text('fixture ' + name)
         result = subprocess.run(['bash', '-ec', run_step('Create checksums')], cwd=folder,
                                 capture_output=True, text=True)
@@ -147,6 +149,26 @@ class DraftCreationTests(unittest.TestCase):
         manifest = folder / 'SHA256SUMS'
         manifest.write_text(''.join(line for line in manifest.read_text().splitlines(True)
                                     if 'remake-right.step' not in line))
+        checked = subprocess.run(['bash', '-ec', run_step('Verify downloaded release checksums')],
+                                 cwd=folder, capture_output=True, text=True)
+        self.assertNotEqual(checked.returncode, 0)
+
+    def test_case_geometry_is_in_checksums_and_tampering_is_rejected(self):
+        folder = self.root / 'build/release'
+        assets = ['remake-jlcpcb.zip', 'remake-schematic.pdf', 'remake-left.png',
+                  'remake-right.png', 'remake-left.step', 'remake-right.step',
+                  'remake-model-coverage.json', *CASE_FILES]
+        for name in assets:
+            (folder / name).write_text('fixture ' + name)
+        created = subprocess.run(['bash', '-ec', run_step('Create checksums')], cwd=folder,
+                                 capture_output=True, text=True)
+        self.assertEqual(created.returncode, 0, created.stderr)
+        lines = (folder / 'SHA256SUMS').read_text().splitlines()
+        self.assertEqual({line.split(maxsplit=1)[1] for line in lines}, set(assets))
+        checked = subprocess.run(['bash', '-ec', run_step('Verify downloaded release checksums')],
+                                 cwd=folder, capture_output=True, text=True)
+        self.assertEqual(checked.returncode, 0, checked.stderr)
+        (folder / 'case-v0.2-right.step').write_text('tampered case')
         checked = subprocess.run(['bash', '-ec', run_step('Verify downloaded release checksums')],
                                  cwd=folder, capture_output=True, text=True)
         self.assertNotEqual(checked.returncode, 0)

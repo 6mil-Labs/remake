@@ -8,6 +8,7 @@ on:
     paths:
       - "hw/**"
       - "cad/components/**"
+      - "cad/case/**"
       - "scripts/**"
       - "tests/**"
       - ".github/workflows/**"
@@ -15,6 +16,7 @@ on:
     paths:
       - "hw/**"
       - "cad/components/**"
+      - "cad/case/**"
       - "scripts/**"
       - "tests/**"
       - ".github/workflows/**"
@@ -23,6 +25,41 @@ permissions:
   contents: read
 
 jobs:
+  case-exports:
+    name: Case body STEP exports
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      # Use the same FreeCAD version as the CAD sources, without FUSE or a GUI.
+      # Pin both the upstream release and its GitHub-published SHA256 digest.
+      - name: Install headless FreeCAD 1.1.4
+        working-directory: ${{ runner.temp }}
+        run: |
+          curl --fail --location --retry 3 --output freecad.AppImage \
+            https://github.com/FreeCAD/FreeCAD/releases/download/1.1.4/FreeCAD_1.1.4-Linux-x86_64-py311.AppImage
+          printf '%s  %s\n' f6dc6ba676e5ac96a565ebc8d657232f94c6158e85b4352141bd1a46f6b43434 freecad.AppImage | sha256sum --check
+          chmod +x freecad.AppImage
+          ./freecad.AppImage --appimage-extract > /dev/null
+
+      - name: Test case export and STEP round trips
+        run: |
+          PYTHONPATH="${RUNNER_TEMP}/squashfs-root/usr/lib" \
+            "${RUNNER_TEMP}/squashfs-root/AppRun" python \
+            -m unittest discover -s tests -p test_case_exports.py -v
+
+      - name: Export case bodies
+        run: |
+          PYTHONPATH="${RUNNER_TEMP}/squashfs-root/usr/lib" \
+            "${RUNNER_TEMP}/squashfs-root/AppRun" python scripts/export-cases.py build/cases
+
+      - name: Upload case STEP files
+        uses: actions/upload-artifact@v7
+        with:
+          name: case-steps
+          path: build/cases/*.step
+          if-no-files-found: error
+
   packaging-tests:
     runs-on: ubuntu-latest
     steps:
