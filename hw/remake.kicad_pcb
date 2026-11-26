@@ -13140,7 +13140,7 @@
 			)
 		)
 	)
-	(footprint "remake-artwork:Logo_REMAKE"
+	(footprint "remake-footprints:Logo_REMAKE"
 		(layer "F.Cu")
 		(uuid "c8ada90a-353d-4362-8554-022b397fb36a")
 		(at 120.346832 111.880702)
