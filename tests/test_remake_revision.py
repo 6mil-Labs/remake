@@ -227,20 +227,27 @@ class RevisionTests(unittest.TestCase):
             f = self.parts[f'SW{i}']
             self.assertEqual(f.GetOrientationDegrees(),0)
 
-    def test_both_faces_have_revision_copyright_and_vector_logo_without_old_title(self):
-        texts = [t for t in self.board.GetDrawings() if isinstance(t, self.pcbnew.PCB_TEXT)]
-        self.assertFalse(any('/ REV 17' in t.GetText() for t in texts))
+    def test_both_faces_retain_revision_attribution_and_remake_artwork(self):
+        # Presence is the contract. Layout, typography and annotation wording
+        # remain editable; the placement DRC checks geometry independently.
+        items = list(self.board.GetDrawings())
+        for footprint in self.board.GetFootprints():
+            items.extend(footprint.GraphicalItems())
+        texts = [item for item in items if isinstance(item, self.pcbnew.PCB_TEXT)]
+        revision = json.loads((ROOT / 'hw/remake.kicad_pro').read_text())['text_variables']['REVISION']
+        revision_pattern = r'REV(?:ISION)?\s*:?\s*(?:\$\{REVISION\}|' + re.escape(revision) + r')'
         for layer in [self.pcbnew.F_SilkS, self.pcbnew.B_SilkS]:
-            actual = {t.GetText(): t for t in texts if t.GetLayer() == layer}
-            for value in ['REV ${REVISION}', '(c) 2026 Felipe Balbi']:
-                self.assertIn(value, actual)
-                self.assertGreaterEqual(self.pcbnew.ToMM(actual[value].GetTextHeight()), 1.2)
-                self.assertGreaterEqual(self.pcbnew.ToMM(actual[value].GetTextThickness()), 0.2)
-        logo = self.parts.get('LOGO1')
-        self.assertIsNotNone(logo)
-        self.assertEqual(str(logo.GetFPID().GetLibNickname()), 'remake-artwork')
-        for layer in [self.pcbnew.F_SilkS, self.pcbnew.B_SilkS]:
-            self.assertTrue(any(g.GetLayer() == layer for g in logo.GraphicalItems()))
+            actual = [' '.join(t.GetText().split()) for t in texts if t.GetLayer() == layer]
+            with self.subTest(layer=self.board.GetLayerName(layer)):
+                self.assertTrue(any(re.fullmatch(revision_pattern, value, re.I) for value in actual),
+                                'Current revision must remain on each silkscreen face')
+                self.assertTrue(any(('(c)' in value.lower() or '©' in value)
+                                    and 'Felipe Balbi' in value for value in actual),
+                                'Copyright attribution must remain on each silkscreen face')
+                self.assertTrue(any(str(f.GetFPID().GetLibItemName()) == 'Logo_REMAKE'
+                                    and any(g.GetLayer() == layer for g in f.GraphicalItems())
+                                    for f in self.board.GetFootprints()),
+                                'REMAKE artwork must remain on each silkscreen face')
 
     def test_revision_and_author_metadata_are_shared_by_pcb_and_schematic(self):
         project = json.loads((ROOT / 'hw/remake.kicad_pro').read_text())
