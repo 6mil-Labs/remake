@@ -249,6 +249,28 @@ class RevisionTests(unittest.TestCase):
                                     for f in self.board.GetFootprints()),
                                 'REMAKE artwork must remain on each silkscreen face')
 
+    def test_board_silkscreen_has_no_socket_side_labels(self):
+        # Catch stale placed labels even after the library footprint is cleaned.
+        items = list(self.board.GetDrawings())
+        for footprint in self.board.GetFootprints():
+            items.extend(footprint.GraphicalItems())
+        unwanted = [item.GetText() for item in items
+                    if isinstance(item, self.pcbnew.PCB_TEXT)
+                    and item.GetLayer() in [self.pcbnew.F_SilkS, self.pcbnew.B_SilkS]
+                    and item.GetText() in {'L SOCKET', 'R SOCKET'}]
+        self.assertEqual(unwanted, [], 'Socket-side labels clutter the PCB silkscreen')
+
+    def test_switch_library_cannot_restore_socket_side_labels(self):
+        # A normal footprint update must not reintroduce the removed labels.
+        footprint = self.pcbnew.FootprintLoad(
+            str(ROOT / 'hw/lib'), 'SW_Hotswap_Kailh_Choc_V1_reversible')
+        self.assertIsNotNone(footprint)
+        unwanted = [item.GetText() for item in footprint.GraphicalItems()
+                    if isinstance(item, self.pcbnew.PCB_TEXT)
+                    and item.GetLayer() in [self.pcbnew.F_SilkS, self.pcbnew.B_SilkS]
+                    and item.GetText() in {'L SOCKET', 'R SOCKET'}]
+        self.assertEqual(unwanted, [], 'Library updates must not restore socket-side labels')
+
     def test_revision_and_author_metadata_are_shared_by_pcb_and_schematic(self):
         project = json.loads((ROOT / 'hw/remake.kicad_pro').read_text())
         self.assertEqual(project['text_variables'].get('REVISION'), '0.3')

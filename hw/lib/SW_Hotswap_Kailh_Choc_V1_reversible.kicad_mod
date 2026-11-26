@@ -314,29 +314,6 @@
 		(layer "F.Fab")
 		(uuid "408699ad-c1dd-4741-b6af-46f7ad0d9607")
 	)
-	(fp_text user "R SOCKET"
-		(at 0 -8 0)
-		(layer "F.SilkS")
-		(uuid "d672e660-e1e0-4ece-b0d0-f4d0c338e4f2")
-		(effects
-			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
-			)
-		)
-	)
-	(fp_text user "L SOCKET"
-		(at 0 8 0)
-		(layer "B.SilkS")
-		(uuid "884c4156-3d3d-4aaf-9f95-ee5a7bd6d235")
-		(effects
-			(font
-				(size 0.8 0.8)
-				(thickness 0.12)
-			)
-			(justify mirror)
-		)
-	)
 	(pad "" np_thru_hole circle
 		(at -5.5 0)
 		(size 1.8 1.8)

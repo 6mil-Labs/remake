@@ -757,29 +757,6 @@
 			(layer "F.Fab")
 			(uuid "8f866aa6-f3a5-40ba-b4f0-d1e96775eb54")
 		)
-		(fp_text user "R SOCKET"
-			(at 0 -8 0)
-			(layer "F.SilkS")
-			(uuid "2b22db08-ac60-454b-aee7-9ece2670c251")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-			)
-		)
-		(fp_text user "L SOCKET"
-			(at 0 8 0)
-			(layer "B.SilkS")
-			(uuid "3cd98b39-976f-4d3b-8e76-837d443e6841")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-				(justify mirror)
-			)
-		)
 		(pad "" np_thru_hole circle
 			(at -5.5 0)
 			(size 1.8 1.8)
@@ -1854,29 +1831,6 @@
 			(layer "F.Fab")
 			(uuid "ce64586f-3463-4f79-ac18-05ba71876a7b")
 		)
-		(fp_text user "R SOCKET"
-			(at 0 -8 0)
-			(layer "F.SilkS")
-			(uuid "b09ec2bd-e481-4e6f-92ff-0a46b7688b52")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-			)
-		)
-		(fp_text user "L SOCKET"
-			(at 0 8 0)
-			(layer "B.SilkS")
-			(uuid "44b4c294-f3b3-40df-9f82-a8e78aafd23d")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-				(justify mirror)
-			)
-		)
 		(pad "" np_thru_hole circle
 			(at -5.5 0)
 			(size 1.8 1.8)
@@ -2331,29 +2285,6 @@
 			(fill no)
 			(layer "F.Fab")
 			(uuid "6472af68-cca7-4a83-a5fc-e879ae1baf0e")
-		)
-		(fp_text user "R SOCKET"
-			(at 0 -8 0)
-			(layer "F.SilkS")
-			(uuid "b249d421-a0d9-4f82-882a-518d0e322eb3")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-			)
-		)
-		(fp_text user "L SOCKET"
-			(at 0 8 0)
-			(layer "B.SilkS")
-			(uuid "c7c970bc-a706-487c-9616-c84343499748")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-				(justify mirror)
-			)
 		)
 		(pad "" np_thru_hole circle
 			(at -5.5 0)
@@ -3233,29 +3164,6 @@
 			(layer "F.Fab")
 			(uuid "f421425e-a9f1-4a51-b089-89548bb4d9d0")
 		)
-		(fp_text user "R SOCKET"
-			(at 0 -8 0)
-			(layer "F.SilkS")
-			(uuid "0bd67837-f586-4003-93d5-e6ccc4fe20a6")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-			)
-		)
-		(fp_text user "L SOCKET"
-			(at 0 8 0)
-			(layer "B.SilkS")
-			(uuid "ec2a245c-3655-41f7-8dc4-50679dca6775")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-				(justify mirror)
-			)
-		)
 		(pad "" np_thru_hole circle
 			(at -5.5 0)
 			(size 1.8 1.8)
@@ -3711,29 +3619,6 @@
 			(layer "F.Fab")
 			(uuid "e69201c9-b432-4386-b3c8-e7edb0e94e0e")
 		)
-		(fp_text user "R SOCKET"
-			(at 0 -8 0)
-			(layer "F.SilkS")
-			(uuid "1c386d95-c264-4ea1-af7e-f78c80012250")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-			)
-		)
-		(fp_text user "L SOCKET"
-			(at 0 8 0)
-			(layer "B.SilkS")
-			(uuid "7f46d543-7e3a-4699-8432-209d3a49ea41")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-				(justify mirror)
-			)
-		)
 		(pad "" np_thru_hole circle
 			(at -5.5 0)
 			(size 1.8 1.8)
@@ -4188,29 +4073,6 @@
 			(fill no)
 			(layer "F.Fab")
 			(uuid "9fcb7391-2aff-41cf-8067-3c44b6d3988a")
-		)
-		(fp_text user "R SOCKET"
-			(at 0 -8 0)
-			(layer "F.SilkS")
-			(uuid "29cef272-3924-48c5-aea7-1522b9d46a4c")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-			)
-		)
-		(fp_text user "L SOCKET"
-			(at 0 8 0)
-			(layer "B.SilkS")
-			(uuid "8bed8772-e081-4cab-868f-a7fc36cf9a3d")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-				(justify mirror)
-			)
 		)
 		(pad "" np_thru_hole circle
 			(at -5.5 0)
@@ -4994,29 +4856,6 @@
 			(fill no)
 			(layer "F.Fab")
 			(uuid "4f17dd6b-0493-486d-9ac6-da8ce1b43e7d")
-		)
-		(fp_text user "R SOCKET"
-			(at 0 -8 345)
-			(layer "F.SilkS")
-			(uuid "347c264d-1c19-418d-aab3-167a045bb213")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-			)
-		)
-		(fp_text user "L SOCKET"
-			(at 0 8 345)
-			(layer "B.SilkS")
-			(uuid "9c5fc43a-57cc-43ab-a2fd-239bc735e572")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-				(justify mirror)
-			)
 		)
 		(pad "" np_thru_hole circle
 			(at -5.5 0 345)
@@ -8003,29 +7842,6 @@
 			(layer "F.Fab")
 			(uuid "5fb5b4f7-84e4-41c8-af93-7bf0f69956d7")
 		)
-		(fp_text user "R SOCKET"
-			(at 0 -8 0)
-			(layer "F.SilkS")
-			(uuid "8c5daf80-0a17-46c5-9c5e-afc800c78fd3")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-			)
-		)
-		(fp_text user "L SOCKET"
-			(at 0 8 0)
-			(layer "B.SilkS")
-			(uuid "469b4950-9ea0-4638-8198-917336924351")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-				(justify mirror)
-			)
-		)
 		(pad "" np_thru_hole circle
 			(at -5.5 0)
 			(size 1.8 1.8)
@@ -9091,29 +8907,6 @@
 			(layer "F.Fab")
 			(uuid "3d203466-6fbd-4c78-8822-c14df83b0ed6")
 		)
-		(fp_text user "R SOCKET"
-			(at 0 -8 0)
-			(layer "F.SilkS")
-			(uuid "38d73d9c-346c-40c5-8553-45419cc537d7")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-			)
-		)
-		(fp_text user "L SOCKET"
-			(at 0 8 0)
-			(layer "B.SilkS")
-			(uuid "d0b783fd-4a40-4412-a5eb-8c7d8380ca39")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-				(justify mirror)
-			)
-		)
 		(pad "" np_thru_hole circle
 			(at -5.5 0)
 			(size 1.8 1.8)
@@ -9568,29 +9361,6 @@
 			(fill no)
 			(layer "F.Fab")
 			(uuid "a72f1f2f-4f24-4597-91fa-014b3e87dbd8")
-		)
-		(fp_text user "R SOCKET"
-			(at 0 -8 0)
-			(layer "F.SilkS")
-			(uuid "a789cb08-2d46-4ee6-ad20-932bc6a569c1")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-			)
-		)
-		(fp_text user "L SOCKET"
-			(at 0 8 0)
-			(layer "B.SilkS")
-			(uuid "281a782f-694e-4f63-9616-a05b58e97557")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-				(justify mirror)
-			)
 		)
 		(pad "" np_thru_hole circle
 			(at -5.5 0)
@@ -10523,29 +10293,6 @@
 			(layer "F.Fab")
 			(uuid "3b4d8e2b-0af5-4211-b6af-b9e9557910bc")
 		)
-		(fp_text user "R SOCKET"
-			(at 0 -8 0)
-			(layer "F.SilkS")
-			(uuid "058436c9-4e37-4982-8db2-0fa28e9d2ae6")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-			)
-		)
-		(fp_text user "L SOCKET"
-			(at 0 8 0)
-			(layer "B.SilkS")
-			(uuid "90614427-29f7-4fc2-85a5-cc08672b3744")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-				(justify mirror)
-			)
-		)
 		(pad "" np_thru_hole circle
 			(at -5.5 0)
 			(size 1.8 1.8)
@@ -11144,29 +10891,6 @@
 			(fill no)
 			(layer "F.Fab")
 			(uuid "fda1030a-415b-4def-8657-c896d42cad9a")
-		)
-		(fp_text user "R SOCKET"
-			(at 0 -8 240)
-			(layer "F.SilkS")
-			(uuid "5ceb79be-7ab0-4508-88ec-bf614076aa38")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-			)
-		)
-		(fp_text user "L SOCKET"
-			(at 0 8 240)
-			(layer "B.SilkS")
-			(uuid "da91b083-2afb-47fe-b50a-6e2f14927316")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-				(justify mirror)
-			)
 		)
 		(pad "" np_thru_hole circle
 			(at -5.5 0 240)
@@ -11901,29 +11625,6 @@
 			(layer "F.Fab")
 			(uuid "eb0764ad-787d-4c41-8b29-4ff883cbe73d")
 		)
-		(fp_text user "R SOCKET"
-			(at 0 -8 0)
-			(layer "F.SilkS")
-			(uuid "88f6816c-3d57-4c36-be4a-3a0ef232cea3")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-			)
-		)
-		(fp_text user "L SOCKET"
-			(at 0 8 0)
-			(layer "B.SilkS")
-			(uuid "a19af90c-61a7-48e9-8b48-3a8a4f6ad82e")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-				(justify mirror)
-			)
-		)
 		(pad "" np_thru_hole circle
 			(at -5.5 0)
 			(size 1.8 1.8)
@@ -12541,29 +12242,6 @@
 			(fill no)
 			(layer "F.Fab")
 			(uuid "3f6d835b-9334-4148-b401-b7d70f4343dc")
-		)
-		(fp_text user "R SOCKET"
-			(at 0 -8 0)
-			(layer "F.SilkS")
-			(uuid "bb9d69f7-36ed-4001-8ca6-ef49d8e3217b")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-			)
-		)
-		(fp_text user "L SOCKET"
-			(at 0 8 0)
-			(layer "B.SilkS")
-			(uuid "a7a9cb9b-e31e-4669-bd4c-87bec15c6bbc")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-				(justify mirror)
-			)
 		)
 		(pad "" np_thru_hole circle
 			(at -5.5 0)
@@ -13324,29 +13002,6 @@
 			(fill no)
 			(layer "F.Fab")
 			(uuid "60e054a5-7e51-4ca1-884b-c9ce4cffb197")
-		)
-		(fp_text user "R SOCKET"
-			(at 0 -8 0)
-			(layer "F.SilkS")
-			(uuid "7849f604-fad1-4805-852c-a59a08fb401e")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-			)
-		)
-		(fp_text user "L SOCKET"
-			(at 0 8 0)
-			(layer "B.SilkS")
-			(uuid "69b6aa69-4db0-4c41-b465-42a658088b88")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-				(justify mirror)
-			)
 		)
 		(pad "" np_thru_hole circle
 			(at -5.5 0)
@@ -33061,29 +32716,6 @@
 			(layer "F.Fab")
 			(uuid "e6a973a9-a960-4599-b3f9-8577b033d37b")
 		)
-		(fp_text user "R SOCKET"
-			(at 0 -8 0)
-			(layer "F.SilkS")
-			(uuid "fecafdbb-d0c0-4155-be4a-edcf387d8d93")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-			)
-		)
-		(fp_text user "L SOCKET"
-			(at 0 8 0)
-			(layer "B.SilkS")
-			(uuid "e07a0283-b353-4ebe-a61c-722613fa0919")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-				(justify mirror)
-			)
-		)
 		(pad "" np_thru_hole circle
 			(at -5.5 0)
 			(size 1.8 1.8)
@@ -33538,29 +33170,6 @@
 			(fill no)
 			(layer "F.Fab")
 			(uuid "21da07d9-dee6-4af7-8c50-7c19ad40b1f8")
-		)
-		(fp_text user "R SOCKET"
-			(at 0 -8 0)
-			(layer "F.SilkS")
-			(uuid "e6d17057-d100-498d-9053-c6617192c4e7")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-			)
-		)
-		(fp_text user "L SOCKET"
-			(at 0 8 0)
-			(layer "B.SilkS")
-			(uuid "81420b45-e7f3-4041-9ed9-3ab9c21e3308")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-				(justify mirror)
-			)
 		)
 		(pad "" np_thru_hole circle
 			(at -5.5 0)
@@ -34323,29 +33932,6 @@
 			(fill no)
 			(layer "F.Fab")
 			(uuid "880e5480-5ffd-4008-bd78-5ebcb8ba3eaf")
-		)
-		(fp_text user "R SOCKET"
-			(at 0 -8 0)
-			(layer "F.SilkS")
-			(uuid "e4d62b07-110f-487f-ab44-1df65281ad34")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-			)
-		)
-		(fp_text user "L SOCKET"
-			(at 0 8 0)
-			(layer "B.SilkS")
-			(uuid "a782e034-4a36-4564-9a88-5b612e5b70ab")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.12)
-				)
-				(justify mirror)
-			)
 		)
 		(pad "" np_thru_hole circle
 			(at -5.5 0)
