@@ -36,6 +36,7 @@ class OshwaSubmissionTests(unittest.TestCase):
             'primaryType': 'Electronics', 'hardwareLicense': 'CERN',
             'softwareLicense': 'MIT', 'documentationLicense': 'Other',
             'availableFileFormat': True, 'agreementTerms': True,
+            'explanationCertificationTerms': 'N/A: I agree to all five certification mark terms.',
             'certificationMarkTerms': {
                 key: {'agreement': True} for key in [
                     'accurateContactInformation', 'complianceWithOfficialCertificationGuidelines',
@@ -126,6 +127,13 @@ class OshwaSubmissionTests(unittest.TestCase):
         result, stdout, stderr = self.run_cli([str(self.payload_file), '--submit'])
         self.assertNotEqual(result, 0)
         self.assertIn('responsibility', stderr)
+        self.assertEqual(self.requests, [])
+
+    def test_empty_mark_explanation_is_rejected_before_the_known_api_validation_error(self):
+        self.payload['explanationCertificationTerms'] = ''
+        result, stdout, stderr = self.run_cli([str(self.payload_file), '--submit'])
+        self.assertNotEqual(result, 0)
+        self.assertIn('explanationCertificationTerms', stderr)
         self.assertEqual(self.requests, [])
 
     def test_conditional_binding_party_is_required_for_a_company(self):

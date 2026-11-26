@@ -94,6 +94,13 @@ def validate_submission(payload):
         term = terms.get(key)
         if not isinstance(term, dict) or term.get('agreement') is not True:
             raise ValueError(f'Review certificationMarkTerms.{key} and explicitly agree.')
+    explanation = payload.get('explanationCertificationTerms')
+    if not isinstance(explanation, str) or not explanation.strip():
+        raise ValueError(
+            'The API rejects an empty explanationCertificationTerms with the documented '
+            'agreement object. If you agree to all five terms, explicitly write '
+            '"N/A: I agree to all five certification mark terms."'
+        )
 
 
 def main(argv=None):

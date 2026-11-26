@@ -58,6 +58,14 @@ answers, and explicit agreement to all five named certification-mark terms. It
 does not implement the entire server-side form validator or change your payload.
 The API reports any additional field/choice errors.
 
+The API has a certification-mark validation mismatch: its published form
+validator checks an array's `length`, while OpenAPI documents an object with
+five named agreements. With that object, an empty `explanationCertificationTerms`
+can be rejected even when all five agreements are true. Keep the documented
+object, and if you accept all five terms, explicitly enter
+`"N/A: I agree to all five certification mark terms."` as the explanation.
+The script checks for a nonempty explanation but never fills consent for you.
+
 The [OpenAPI specification](https://certificationapi.oshwa.org/open-api-spec)
 has inconsistencies: `noCommercialRestriction` is typed as a string but its
 examples use a boolean; the template follows the boolean examples. It also
